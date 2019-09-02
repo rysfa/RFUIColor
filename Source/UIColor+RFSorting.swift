@@ -7,12 +7,14 @@
 
 import UIKit
 
-enum SortColorsBy {
+enum RFSortColorsBy {
     case brightness
     case hue
 }
 
 extension UIColor {
+
+    // MARK: Class Functions
 
     /// Creates a `Array` of `UIColor`, that takes in all the `UIColor` values in `colors` and rearranges the values based on the sorting method `sort` and the order `ascending`.
     ///
@@ -23,7 +25,7 @@ extension UIColor {
     ///
     /// - Returns: The new `Array` of `UIColor` result from the sorting.
     static func sort(colors: [UIColor],
-                     sortedBy sort: SortColorsBy,
+                     sortedBy sort: RFSortColorsBy,
                      ascending: Bool = true) -> [UIColor] {
         return colors.sorted(by: { (colorA, colorB) -> Bool in
             return compare(colorA: colorA,
@@ -42,7 +44,7 @@ extension UIColor {
     ///
     /// - Returns: The new `Array` of `String` hexadecimal values result from the sorting.
     static func sort(hexValues colors: [String],
-                     sortedBy sort: SortColorsBy,
+                     sortedBy sort: RFSortColorsBy,
                      ascending: Bool = true) -> [String] {
         return colors.sorted(by: { (colorHexA, colorHexB) -> Bool in
             guard let colorB = colorHexB.color else {
@@ -108,9 +110,11 @@ extension UIColor {
         })
     }
 
+    // MARK: Private Class Functions
+
     fileprivate static func compare(colorA: UIColor,
                                     colorB: UIColor,
-                                    sortedBy: SortColorsBy,
+                                    sortedBy: RFSortColorsBy,
                                     ascending: Bool = true) -> Bool {
         switch sortedBy {
         case .brightness:

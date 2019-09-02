@@ -9,6 +9,8 @@ import UIKit
 
 extension UIColor {
 
+    // MARK: Functions
+
     /// Creates a `UIColor`, with the rgb values combined between `self` and `color`, with the `distribution` determining the balance of the rgb values from `self` and `color`.
     ///
     /// - Parameters:
@@ -35,6 +37,8 @@ extension UIColor {
         let alpha: CGFloat = (alpha1 * (1.0 - distribution)) + (alpha2 * distribution)
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
+
+    // MARK: Class Functions
 
     /// Creates a `UIColor`, with the rgb values combined between all the values in `colors`, with the `distribution` with an array of values, each determining the percentage of distribution of the color of the same index in `colors`.
     ///

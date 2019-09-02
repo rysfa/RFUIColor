@@ -7,11 +7,13 @@
 
 import UIKit
 
-let rgbRedWeight: Int = 299
-let rgbGreenWeight: Int = 587
-let rgbBlueWeight: Int = 114
+let RFRGBRedWeight: Int = 299
+let RFRGBGreenWeight: Int = 587
+let RFRGBBlueWeight: Int = 114
 
 extension UIColor {
+
+    // MARK: Variables
 
     /// The hue value of `self`.
     /// Reference: https://en.wikipedia.org/wiki/Hue
@@ -47,7 +49,7 @@ extension UIColor {
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
         getRed(&red, green: &green, blue: &blue, alpha: nil)
-        return ((red * CGFloat(rgbRedWeight)) + (green * CGFloat(rgbGreenWeight)) + (blue * CGFloat(rgbBlueWeight))) / 1000
+        return ((red * CGFloat(RFRGBRedWeight)) + (green * CGFloat(RFRGBGreenWeight)) + (blue * CGFloat(RFRGBBlueWeight))) / 1000
     }
 
     /// The complementary `UIColor` of `self`.
@@ -65,6 +67,8 @@ extension UIColor {
                        alpha: 1.0)
     }
 
+    // MARK: Functions
+
     /// Creates a `CGFloat`, with the level of similarity between `self` and the `UIColor value of `color`.
     ///
     /// - Parameters:
@@ -72,7 +76,7 @@ extension UIColor {
     ///
     /// - Returns: The `CGFloat` value, between 0.0 and 1.0 (higher value representing higher similarity).
     func similarity(to color: UIColor) -> CGFloat {
-        let difference: CGFloat = CGFloat(rgbValueDifference(to: color)) / CGFloat((rgbRedWeight + rgbBlueWeight + rgbGreenWeight))
+        let difference: CGFloat = CGFloat(rgbValueDifference(to: color)) / CGFloat((RFRGBRedWeight + RFRGBBlueWeight + RFRGBGreenWeight))
         return 1.0 - difference
     }
 
@@ -92,9 +96,9 @@ extension UIColor {
         var blue2: CGFloat = 0.0
         color.getRed(&red2, green: &green2, blue: &blue2, alpha: nil)
 
-        let redValue: CGFloat = abs(red1 - red2) * CGFloat(rgbRedWeight)
-        let greenValue: CGFloat = abs(green1 - green2) * CGFloat(rgbGreenWeight)
-        let blueValue: CGFloat = abs(blue1 - blue2) * CGFloat(rgbBlueWeight)
+        let redValue: CGFloat = abs(red1 - red2) * CGFloat(RFRGBRedWeight)
+        let greenValue: CGFloat = abs(green1 - green2) * CGFloat(RFRGBGreenWeight)
+        let blueValue: CGFloat = abs(blue1 - blue2) * CGFloat(RFRGBBlueWeight)
         return Int(redValue + greenValue + blueValue)
     }
 

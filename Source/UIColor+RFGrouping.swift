@@ -9,6 +9,8 @@ import Foundation
 
 extension UIColor {
 
+    // MARK: Class Functions
+
     /// Creates a `Array` of `Array` of `UIColor`, that takes in all the `UIColor` values in `colors` and groups them based on closest matching `UIColor` in `segments`. The resulting inner `Array` will contain all the `UIColor` values in `color` that matches each individual `UIColor` in `segments`, with the resulting outer `Array` indexed by the index of `segments`.
     ///
     /// - Parameters:

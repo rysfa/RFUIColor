@@ -9,6 +9,8 @@ import UIKit
 
 extension String {
 
+    // MARK: Variables
+
     /// The `UIColor` value of the hexadecimal value of `self`.
     ///
     /// - Returns: The `UIColor` value, or if `self` is not a valid hexadecimal value, returns nil.
@@ -43,6 +45,8 @@ extension String {
     var isValidHexValue: Bool {
         return isHexString(isComplete: true)
     }
+
+    // MARK: Private Functions
 
     fileprivate func isHexString(isComplete: Bool = true) -> Bool {
         var hexString = Substring(self)

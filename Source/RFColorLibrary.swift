@@ -7,6 +7,12 @@
 
 import UIKit
 
+let RFSampleFolderPath: String = "https://raw.githubusercontent.com/rysfa/RFUIColor/master/Sample%20JSON%20Files/"
+let RFSampleColorsFileName: String = "Sample%20Colors.json"
+let RFSampleColorsWithNamesFileName: String = "Sample%20Colors%20with%20Names.json"
+let RFSampleSegmentsFileName: String = "Sample%20Segments.json"
+let RFSampleSegmentsWithNamesFileName: String = "Sample%20Segments%20with%20Names.json"
+
 enum RFColorLibrarySortBy {
     case segment
     case hue
@@ -15,96 +21,73 @@ enum RFColorLibrarySortBy {
 
 class RFColorLibrary {
 
+    // MARK: Class Variables
+
+    /// The `RFColorLibrary` shared instance, would be treated as the primary source and is globally accessible.
+    ///
+    /// - Returns: The `RFColorLibrary` shared instance.
     static let main = RFColorLibrary()
 
+    // MARK: Variables
+
+    /// The `Array` of `String` hexadecimal values of `rawColors` sorted by the `sortBy` sorting method.
+    ///
+    /// - Returns: The sorted `Array` of `String` hexadecimal values.
     var colors: [String] {
         return sortColors()
     }
 
-    var sort: RFColorLibrarySortBy = .segment
+    /// The `RFColorLibrarySortBy` sorting method that is applied to the `colors`.
+    ///
+    /// - Returns: The `RFColorLibrarySortBy` sorting method. `segment` by default.
+    var sortBy: RFColorLibrarySortBy = .segment
+
+    /// The `Bool` value ordering that is applied to the `colors`.
+    ///
+    /// - Returns: The `Bool` order value. `true` by default.
     var ascending: Bool = true
 
-    var colorDictionary = [String : String]() {
+    /// The `Dictionary` with a key of `String` hexadecimal value and a value of `String` color name, of all the colors.
+    ///
+    /// - Returns: The `Dictionary` with a key of `String` hexadecimal value and a value of `String` color name.
+    var rawColors = [String : String]() {
         didSet {
             sortedColorsTable.removeAll()
         }
     }
 
-    var colorSegments = [String]() {
+    /// The `Array` of `String` hexadecimal values, of all the segments.
+    ///
+    /// - Returns: The `Array` of `String` hexadecimal values.
+    var rawSegments = [String]() {
         didSet {
-            sortedColorsTable.removeAll()
+            sortedColorsTable.removeValue(forKey: .segment)
         }
     }
 
-    func addSampleColors() {
-        let sampleColors = [
-            "#000000" : "Black",
-            "#555555" : "Dark Gray",
-            "#AAAAAA" : "Light Gray",
-            "#FFFFFF" : "White",
-            "#808080" : "Gray",
-            "#FF0000" : "Red",
-            "#00FF00" : "Green",
-            "#0000FF" : "Blue",
-            "#00FFFF" : "Cyan",
-            "#FFFF00" : "Yellow",
-            "#FF00FF" : "Magenta",
-            "#FF8000" : "Orange",
-            "#800080" : "Purple",
-            "#996633" : "Brown"]
+    // MARK: Functions
 
-        sampleColors.forEach { (tuple) in
-            let (hexValue, name) = tuple
-            if colorDictionary[hexValue] == nil {
-                colorDictionary[hexValue] = name
-            }
-        }
-    }
-
-    func addSampleSegments() {
-        let sampleSegments = [
-            "#FF0000" /* Red */,
-            "#FF8000" /* Orange */,
-            "#FFFF00" /* Yellow */,
-            "#00FF00" /* Green */,
-            "#0000FF" /* Blue */,
-            "#800080" /* Purple */,
-            "#996633" /* Brown */,
-            "#FFFFFF" /* White */,
-            "#808080" /* Gray */,
-            "#000000" /* Black */]
-
-        sampleSegments.forEach { (string) in
-            let hexValue = string as String
-            if !colorSegments.contains(hexValue) {
-                colorSegments.append(hexValue)
-            }
-        }
-    }
-
-    fileprivate var sortedColorsTable = [RFColorLibrarySortBy : [String]]()
-
-    fileprivate func sortColors() -> [String] {
-        if let sortedColors = sortedColorsTable[sort] {
-            return sortedColors
-        }
-        let allColors: [String] = Array(colorDictionary.keys)
-        let sortedColors = UIColor.sort(hexValues: allColors, into: colorSegments, ascending: ascending)
-        sortedColorsTable[sort] = sortedColors
-        return sortedColors
-    }
-
-    func downloadFromServer(withCompletion completion: (() -> Void)? = nil) {
+    /// Updates the `rawColors` and `rawSegments` values from downloading the `colorsURL` and `segmentsURL` parameters.
+    ///
+    /// - Parameters:
+    ///   - colorsURL:      The `URL` for downloading the `colors`.
+    ///   - segmentsURL:    The `URL` for downloading the `segments`.
+    ///   - completion:     The completion block called after both the colors and segments have been updated.
+    func download(colors colorsURL: URL?, segments segmentsURL: URL?, with completion: (() -> Void)? = nil) {
         let dispatchGroup = DispatchGroup()
 
-        dispatchGroup.enter()
-        downloadColors {
-            dispatchGroup.leave()
+        if let colorsURL = colorsURL {
+            dispatchGroup.enter()
+            downloadColors(from: colorsURL) { (success: Bool) in
+                dispatchGroup.leave()
+            }
         }
 
-        dispatchGroup.enter()
-        downloadSegments {
-            dispatchGroup.leave()
+        if let segmentsURL = segmentsURL {
+            dispatchGroup.enter()
+            downloadSegments(from: segmentsURL) { (success: Bool) in
+                dispatchGroup.leave()
+            }
         }
 
         dispatchGroup.notify(queue: .main) {
@@ -112,58 +95,130 @@ class RFColorLibrary {
         }
     }
 
-    func downloadColors(withCompletion completion: (() -> Void)? = nil) {
-        let session = URLSession(configuration: .default)
-//        guard let url = URL(string: "https://raw.githubusercontent.com/rysfa/ColorMixer/master/ColorMixer/colors.json") else {
-        guard let path = Bundle.main.path(forResource: "colors", ofType: "json", inDirectory: nil, forLocalization: nil) else {
-            completion?()
-            return
-        }
-
-        let dataTask = session.dataTask(with: URL(fileURLWithPath: path)) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
-            guard let data = data else {
-                completion?()
-                return
-            }
-
-            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : String] else {
-                completion?()
-                return
-            }
-
-            json.forEach { (tuple) in
-                let (hexValue, name) = tuple
-                if self?.colorDictionary[hexValue] == nil {
-                    self?.colorDictionary[hexValue] = name
-                }
-            }
-
+    /// Updates the `rawColors` and `rawSegments` values from downloading the sample colors and segments.
+    ///
+    /// - Parameters:
+    ///   - completion: The completion block called after both the colors and segments have been updated.
+    func downloadSampleColorsAndSegments(with completion: (() -> Void)? = nil) {
+        download(colors: URL(string: RFSampleFolderPath + RFSampleColorsFileName),
+                 segments: URL(string: RFSampleFolderPath + RFSampleSegmentsFileName)) {
             completion?()
         }
-        dataTask.resume()
     }
 
-    func downloadSegments(withCompletion completion: (() -> Void)? = nil) {
-        let session = URLSession(configuration: .default)
-        //        guard let url = URL(string: "https://raw.githubusercontent.com/rysfa/ColorMixer/master/ColorMixer/colors.json") else {
-        guard let path = Bundle.main.path(forResource: "segments", ofType: "json", inDirectory: nil, forLocalization: nil) else {
-            completion?()
-            return
-        }
-
-        let dataTask = session.dataTask(with: URL(fileURLWithPath: path)) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
+    /// Updates the `rawColors` values from downloading the `url` parameter.
+    ///
+    /// - Parameters:
+    ///   - url:        The `URL` for downloading the `colors`.
+    ///   - completion: The completion block called after the colors have been updated. `success` returns whether `rawColors` was successfully updated.
+    func downloadColors(from url: URL, with completion: ((_ success: Bool) -> Void)? = nil) {
+        fetch(from: url) { [weak self] (data: Any?) in
             guard let data = data else {
-                completion?()
+                completion?(false)
                 return
             }
 
-            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String] else {
-                completion?()
+            if let json = data as? [String : String] {
+                self?.rawColors.removeAll()
+                self?.sortedColorsTable.removeAll()
+                json.forEach { (tuple) in
+                    let (value, name) = tuple
+                    if value.isValidHexValue && self?.rawColors[value] == nil {
+                        self?.rawColors[value] = name
+                    }
+                }
+                completion?(true)
+            }
+
+            if let json = data as? [String] {
+                self?.rawColors.removeAll()
+                self?.sortedColorsTable.removeAll()
+                json.forEach { (value) in
+                    if value.isValidHexValue && self?.rawColors[value] == nil {
+                        self?.rawColors[value] = value
+                    }
+                }
+                completion?(true)
+            }
+
+            completion?(false)
+        }
+    }
+
+    /// Updates the `rawSegments` values from downloading the `url` parameter.
+    ///
+    /// - Parameters:
+    ///   - url:        The `URL` for downloading the `segments`.
+    ///   - completion: The completion block called after the segments have been updated. `success` returns whether `rawColors` was successfully updated.
+    func downloadSegments(from url: URL, with completion: ((_ success: Bool) -> Void)? = nil) {
+        fetch(from: url) { [weak self] (data: Any?) in
+            guard let data = data else {
+                completion?(false)
                 return
             }
 
-            self?.colorSegments = json
-            completion?()
+            if let json = data as? [String : String] {
+                self?.rawSegments.removeAll()
+                self?.sortedColorsTable.removeValue(forKey: .segment)
+                json.forEach { (tuple) in
+                    let (value, _) = tuple
+                    if value.isValidHexValue {
+                        self?.rawSegments.append(value)
+                    }
+                }
+                completion?(true)
+            }
+
+            if let json = data as? [String] {
+                self?.rawSegments.removeAll()
+                self?.sortedColorsTable.removeValue(forKey: .segment)
+                json.forEach { (value) in
+                    if value.isValidHexValue {
+                        self?.rawSegments.append(value)
+                    }
+                }
+                completion?(true)
+            }
+
+            completion?(false)
+        }
+    }
+
+    // MARK: Private Variables
+
+    fileprivate var sortedColorsTable = [RFColorLibrarySortBy : [String]]()
+
+    // MARK: Private Functions
+
+    fileprivate func sortColors() -> [String] {
+        if let sortedColors = sortedColorsTable[sortBy] {
+            return sortedColors
+        }
+        let allColors: [String] = Array(rawColors.keys)
+        let sortedColors = UIColor.sort(hexValues: allColors, into: rawSegments, ascending: ascending)
+        sortedColorsTable[sortBy] = sortedColors
+        return sortedColors
+    }
+
+    fileprivate func fetch(from url: URL, with completion: ((Any?) -> Void)? = nil) {
+        let session = URLSession(configuration: .default)
+        let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+            guard let data = data else {
+                completion?(nil)
+                return
+            }
+
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : String] {
+                completion?(json)
+                return
+            }
+
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String] {
+                completion?(json)
+                return
+            }
+
+            completion?(nil)
         }
         dataTask.resume()
     }
