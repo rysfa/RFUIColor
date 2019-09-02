@@ -12,7 +12,10 @@
 		1990000E202AE47FCEF3A288ED55C156 /* RFUIColor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B28FE11DAAD65A89F36AC8481055BC /* RFUIColor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		236FBD1E4F537813A6B836EAC33BEE7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		41CAE5DE7F049FE96E1CC4837F1246E0 /* Pods-RFUIColor_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C44F5B85B3AE9F90CBA5B06B581A80 /* Pods-RFUIColor_Tests-dummy.m */; };
-		63DFD74DECA54DB99BA9E8F550B9F86E /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69245A51B0305F0BA90A843E2972BF8 /* ReplaceMe.swift */; };
+		512D61CE231D8A6E000B97EA /* UIColor+ColorMixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61C6231D8A6E000B97EA /* UIColor+ColorMixer.swift */; };
+		512D61D1231D8A6E000B97EA /* UIColor+Blending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61C9231D8A6E000B97EA /* UIColor+Blending.swift */; };
+		512D61D3231D8A6E000B97EA /* UIColor+Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61CB231D8A6E000B97EA /* UIColor+Sorting.swift */; };
+		512D61D4231D8A6E000B97EA /* String+ColorMixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61CC231D8A6E000B97EA /* String+ColorMixer.swift */; };
 		7A2042365AAE03E31D86C657559AD63B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		A3447838E0E382778B6A86409B984FC9 /* Pods-RFUIColor_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BFB972B47417A01DB4E1F3968A8BC47 /* Pods-RFUIColor_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B300B51E09D6607A85ADD8CEDBB3F83F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -40,33 +43,36 @@
 		053193A1D2CD506833802E69F7CA34AC /* Pods-RFUIColor_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RFUIColor_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		058AE0E9B5BA64683BE1779B9509B297 /* RFUIColor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RFUIColor.xcconfig; sourceTree = "<group>"; };
 		09C44F5B85B3AE9F90CBA5B06B581A80 /* Pods-RFUIColor_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RFUIColor_Tests-dummy.m"; sourceTree = "<group>"; };
-		0FB95707B591B7262B6FFEC4C76BBA65 /* Pods_RFUIColor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RFUIColor_Example.framework; path = "Pods-RFUIColor_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		11CEB8F7C7CBDBC612728F44BADD8053 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		0FB95707B591B7262B6FFEC4C76BBA65 /* Pods_RFUIColor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11CEB8F7C7CBDBC612728F44BADD8053 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		15039085F35D510019C5F195EEA86081 /* Pods-RFUIColor_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RFUIColor_Example-dummy.m"; sourceTree = "<group>"; };
-		1AA88DD6EC76772CF2133E0D61B0E2B3 /* RFUIColor.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = RFUIColor.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1AA88DD6EC76772CF2133E0D61B0E2B3 /* RFUIColor.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = RFUIColor.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1EB8278DE9CF9B8A69E7C1B0751EA198 /* RFUIColor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RFUIColor.modulemap; sourceTree = "<group>"; };
 		2029EF5D725CADA35E0E23F66C2DA397 /* Pods-RFUIColor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFUIColor_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		4140285A5C84D6C8A3566C05F592860D /* Pods-RFUIColor_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RFUIColor_Example.modulemap"; sourceTree = "<group>"; };
 		4BFB972B47417A01DB4E1F3968A8BC47 /* Pods-RFUIColor_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RFUIColor_Tests-umbrella.h"; sourceTree = "<group>"; };
+		512D61C6231D8A6E000B97EA /* UIColor+ColorMixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorMixer.swift"; sourceTree = "<group>"; };
+		512D61C9231D8A6E000B97EA /* UIColor+Blending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Blending.swift"; sourceTree = "<group>"; };
+		512D61CB231D8A6E000B97EA /* UIColor+Sorting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Sorting.swift"; sourceTree = "<group>"; };
+		512D61CC231D8A6E000B97EA /* String+ColorMixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ColorMixer.swift"; sourceTree = "<group>"; };
 		57B28FE11DAAD65A89F36AC8481055BC /* RFUIColor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RFUIColor-umbrella.h"; sourceTree = "<group>"; };
-		624353C73EA4FF7BBDFD22BBDEECEF41 /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RFUIColor_Tests.framework; path = "Pods-RFUIColor_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		624353C73EA4FF7BBDFD22BBDEECEF41 /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		690BA436268A9ED515BFBDF05A613F43 /* Pods-RFUIColor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFUIColor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6CEE059CB6AF89E877DAA1335BFF2369 /* Pods-RFUIColor_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RFUIColor_Tests-Info.plist"; sourceTree = "<group>"; };
-		702FF5A3957E1412348583FAE6ADC368 /* RFUIColor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RFUIColor.framework; path = RFUIColor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		702FF5A3957E1412348583FAE6ADC368 /* RFUIColor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RFUIColor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7797F7314DBE660689F0D8C225C5532D /* RFUIColor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RFUIColor-Info.plist"; sourceTree = "<group>"; };
 		794474EDA9B778E014F0EB45058946C4 /* Pods-RFUIColor_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RFUIColor_Example-frameworks.sh"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A387F7A7C68D5B9CC9CCF91BFEE225B3 /* Pods-RFUIColor_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RFUIColor_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A66D2F55E804E974776D5EAB8B74039F /* RFUIColor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RFUIColor-prefix.pch"; sourceTree = "<group>"; };
-		B69245A51B0305F0BA90A843E2972BF8 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = RFUIColor/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		D01B59D13778E69E7E88CB60CE4822C0 /* Pods-RFUIColor_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RFUIColor_Tests.modulemap"; sourceTree = "<group>"; };
 		D89C0AB6B3FF8E1D78066A57F311C593 /* Pods-RFUIColor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFUIColor_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D8EB0A06DD742FB0A3C72725DC7E7BA5 /* Pods-RFUIColor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFUIColor_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D973A167D5283AD0D9794BCFCEB95CD9 /* RFUIColor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RFUIColor-dummy.m"; sourceTree = "<group>"; };
 		DE114D5FF387A9A6510987EBC1BDAD9A /* Pods-RFUIColor_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RFUIColor_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E06E7D67E945509C6A25565C86E748D6 /* Pods-RFUIColor_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RFUIColor_Example-Info.plist"; sourceTree = "<group>"; };
-		E2E4711FF09568DDA7DC5EC2A104557E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		E2E4711FF09568DDA7DC5EC2A104557E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F08EE7BF6D6E20174397526685A2935B /* Pods-RFUIColor_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RFUIColor_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F1EC881501FF24EE0C96BEC82D78A2D7 /* Pods-RFUIColor_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RFUIColor_Example-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +112,17 @@
 				BE80E15FEE5549EA5454A8BB36613128 /* Pods-RFUIColor_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		512D61C5231D8A1B000B97EA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				512D61CC231D8A6E000B97EA /* String+ColorMixer.swift */,
+				512D61C9231D8A6E000B97EA /* UIColor+Blending.swift */,
+				512D61C6231D8A6E000B97EA /* UIColor+ColorMixer.swift */,
+				512D61CB231D8A6E000B97EA /* UIColor+Sorting.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		5545B6F9989D112B937A763D41C133C8 /* Pods-RFUIColor_Example */ = {
@@ -213,7 +230,7 @@
 		F5D940A8A050F73A205DB750591E3D61 /* RFUIColor */ = {
 			isa = PBXGroup;
 			children = (
-				B69245A51B0305F0BA90A843E2972BF8 /* ReplaceMe.swift */,
+				512D61C5231D8A1B000B97EA /* Source */,
 				8E022B1EAFC03D5AC07BE74FAAD03B73 /* Pod */,
 				866AF173B73634FACC436BF34FC3C6F0 /* Support Files */,
 			);
@@ -315,6 +332,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					4D311C9CC58AAE604A087FA0B51A5EB1 = {
+						LastSwiftMigration = 1030;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -380,8 +402,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63DFD74DECA54DB99BA9E8F550B9F86E /* ReplaceMe.swift in Sources */,
+				512D61D4231D8A6E000B97EA /* String+ColorMixer.swift in Sources */,
 				C777195DE2F9948C1C10DD51450A8B28 /* RFUIColor-dummy.m in Sources */,
+				512D61D3231D8A6E000B97EA /* UIColor+Sorting.swift in Sources */,
+				512D61D1231D8A6E000B97EA /* UIColor+Blending.swift in Sources */,
+				512D61CE231D8A6E000B97EA /* UIColor+ColorMixer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 058AE0E9B5BA64683BE1779B9509B297 /* RFUIColor.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -427,7 +453,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -438,6 +465,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 058AE0E9B5BA64683BE1779B9509B297 /* RFUIColor.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -458,7 +486,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -620,8 +648,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
