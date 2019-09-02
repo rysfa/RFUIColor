@@ -1,6 +1,6 @@
 //
-//  UIColor+ColorMixer.swift
-//  ColorMixer
+//  UIColor+RFValues.swift
+//  RFUIColor
 //
 //  Created by Richard Fa on 2018-05-12.
 //
@@ -13,12 +13,20 @@ let rgbBlueWeight: Int = 114
 
 extension UIColor {
 
+    /// The hue value of `self`.
+    /// Reference: https://en.wikipedia.org/wiki/Hue
+    ///
+    /// - Returns: The `CGFloat` value, between 0.0 and 1.0.
     var hue: CGFloat {
         var hue: CGFloat = 0
         self.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
         return hue
     }
 
+    /// The hexadecimal value of `self`, including the prefixed octothorpe.
+    /// Reference: https://en.wikipedia.org/wiki/Web_colors
+    ///
+    /// - Returns: The `String` hexadecimal value.
     var hexValue: String {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -30,6 +38,10 @@ extension UIColor {
                       lroundf(Float(blue * 255)))
     }
 
+    /// The level of brightness of `self`.
+    /// Reference: https://en.wikipedia.org/wiki/Brightness
+    ///
+    /// - Returns: The `CGFloat` value, between 0.0 and 1.0 (higher value representing higher brightness).
     var brightness: CGFloat {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -38,6 +50,10 @@ extension UIColor {
         return ((red * CGFloat(rgbRedWeight)) + (green * CGFloat(rgbGreenWeight)) + (blue * CGFloat(rgbBlueWeight))) / 1000
     }
 
+    /// The complementary `UIColor` of `self`.
+    /// Reference: https://en.wikipedia.org/wiki/Complementary_colors
+    ///
+    /// - Returns: The `UIColor` value.
     var complement: UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -49,11 +65,23 @@ extension UIColor {
                        alpha: 1.0)
     }
 
+    /// Creates a `CGFloat`, with the level of similarity between `self` and the `UIColor value of `color`.
+    ///
+    /// - Parameters:
+    ///   - color:  The other `UIColor` value that will be compared with `self`.
+    ///
+    /// - Returns: The `CGFloat` value, between 0.0 and 1.0 (higher value representing higher similarity).
     func similarity(to color: UIColor) -> CGFloat {
         let difference: CGFloat = CGFloat(rgbValueDifference(to: color)) / CGFloat((rgbRedWeight + rgbBlueWeight + rgbGreenWeight))
         return 1.0 - difference
     }
 
+    /// Creates an `Int`, with the amount of difference between `self` and the `UIColor value of `color`, in terms of rgb values.
+    ///
+    /// - Parameters:
+    ///   - color:  The other `UIColor` value that will be compared with `self`.
+    ///
+    /// - Returns: The `Int` value, between 0 and 1,000 (higher value representing higher difference).
     func rgbValueDifference(to color: UIColor) -> Int {
         var red1: CGFloat = 0.0
         var green1: CGFloat = 0.0
@@ -70,6 +98,12 @@ extension UIColor {
         return Int(redValue + greenValue + blueValue)
     }
 
+    /// Creates an `Int`, that represents the index in `colors` in which `self` has the best fit.
+    ///
+    /// - Parameters:
+    ///   - colors:  The `Array` of `UIColor` values.
+    ///
+    /// - Returns: The `Int` resulting index.
     func indexForBestMatch(in colors: [UIColor]) -> Int {
         var bestMatchIndex: Int = -1
         for color in colors {
@@ -82,6 +116,12 @@ extension UIColor {
         return bestMatchIndex
     }
 
+    /// Creates an `Int`, that represents the index in `colors` in which `self` has the best fit.
+    ///
+    /// - Parameters:
+    ///   - colors:  The `Array` of `String` hexadecimal values.
+    ///
+    /// - Returns: The `Int` resulting index.
     func indexForBestMatch(in hexValues: [String]) -> Int {
         var allColors = [UIColor]()
         for hexValue in hexValues {
@@ -90,41 +130,5 @@ extension UIColor {
             }
         }
         return indexForBestMatch(in: allColors)
-    }
-
-    static func split(colors: [UIColor], into segments: [UIColor]) -> [[UIColor]] {
-        guard segments.count > 1 else {
-            return [colors]
-        }
-
-        var segmentedColors = [[UIColor]]()
-        for _ in 0..<segments.count {
-            segmentedColors.append([UIColor]())
-        }
-
-        colors.forEach { (color: UIColor) in
-            let index = color.indexForBestMatch(in: segments)
-            segmentedColors[index].append(color)
-        }
-        return segmentedColors
-    }
-
-    static func split(hexValues colors: [String], into segments: [String]) -> [[String]] {
-        guard segments.count > 1 else {
-            return [colors]
-        }
-
-        var segmentedColors = [[String]]()
-        for _ in 0..<segments.count {
-            segmentedColors.append([String]())
-        }
-
-        colors.forEach { (hexColor: String) in
-            if let color = hexColor.color {
-                let index = color.indexForBestMatch(in: segments)
-                segmentedColors[index].append(hexColor)
-            }
-        }
-        return segmentedColors
     }
 }

@@ -12,10 +12,11 @@
 		1990000E202AE47FCEF3A288ED55C156 /* RFUIColor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B28FE11DAAD65A89F36AC8481055BC /* RFUIColor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		236FBD1E4F537813A6B836EAC33BEE7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		41CAE5DE7F049FE96E1CC4837F1246E0 /* Pods-RFUIColor_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C44F5B85B3AE9F90CBA5B06B581A80 /* Pods-RFUIColor_Tests-dummy.m */; };
-		512D61CE231D8A6E000B97EA /* UIColor+ColorMixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61C6231D8A6E000B97EA /* UIColor+ColorMixer.swift */; };
-		512D61D1231D8A6E000B97EA /* UIColor+Blending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61C9231D8A6E000B97EA /* UIColor+Blending.swift */; };
-		512D61D3231D8A6E000B97EA /* UIColor+Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61CB231D8A6E000B97EA /* UIColor+Sorting.swift */; };
-		512D61D4231D8A6E000B97EA /* String+ColorMixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61CC231D8A6E000B97EA /* String+ColorMixer.swift */; };
+		512D61DD231D9196000B97EA /* String+RFColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61DC231D9196000B97EA /* String+RFColor.swift */; };
+		512D61DF231D91B9000B97EA /* UIColor+RFValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61DE231D91B9000B97EA /* UIColor+RFValues.swift */; };
+		512D61E1231D91FC000B97EA /* UIColor+RFBlending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61E0231D91FB000B97EA /* UIColor+RFBlending.swift */; };
+		512D61E3231D920E000B97EA /* UIColor+RFGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61E2231D920E000B97EA /* UIColor+RFGrouping.swift */; };
+		512D61E5231D921B000B97EA /* UIColor+RFSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61E4231D921B000B97EA /* UIColor+RFSorting.swift */; };
 		7A2042365AAE03E31D86C657559AD63B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		A3447838E0E382778B6A86409B984FC9 /* Pods-RFUIColor_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BFB972B47417A01DB4E1F3968A8BC47 /* Pods-RFUIColor_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B300B51E09D6607A85ADD8CEDBB3F83F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -52,10 +53,11 @@
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		4140285A5C84D6C8A3566C05F592860D /* Pods-RFUIColor_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RFUIColor_Example.modulemap"; sourceTree = "<group>"; };
 		4BFB972B47417A01DB4E1F3968A8BC47 /* Pods-RFUIColor_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RFUIColor_Tests-umbrella.h"; sourceTree = "<group>"; };
-		512D61C6231D8A6E000B97EA /* UIColor+ColorMixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorMixer.swift"; sourceTree = "<group>"; };
-		512D61C9231D8A6E000B97EA /* UIColor+Blending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Blending.swift"; sourceTree = "<group>"; };
-		512D61CB231D8A6E000B97EA /* UIColor+Sorting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Sorting.swift"; sourceTree = "<group>"; };
-		512D61CC231D8A6E000B97EA /* String+ColorMixer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ColorMixer.swift"; sourceTree = "<group>"; };
+		512D61DC231D9196000B97EA /* String+RFColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+RFColor.swift"; sourceTree = "<group>"; };
+		512D61DE231D91B9000B97EA /* UIColor+RFValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RFValues.swift"; sourceTree = "<group>"; };
+		512D61E0231D91FB000B97EA /* UIColor+RFBlending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RFBlending.swift"; sourceTree = "<group>"; };
+		512D61E2231D920E000B97EA /* UIColor+RFGrouping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RFGrouping.swift"; sourceTree = "<group>"; };
+		512D61E4231D921B000B97EA /* UIColor+RFSorting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RFSorting.swift"; sourceTree = "<group>"; };
 		57B28FE11DAAD65A89F36AC8481055BC /* RFUIColor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RFUIColor-umbrella.h"; sourceTree = "<group>"; };
 		624353C73EA4FF7BBDFD22BBDEECEF41 /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		690BA436268A9ED515BFBDF05A613F43 /* Pods-RFUIColor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFUIColor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,10 +119,11 @@
 		512D61C5231D8A1B000B97EA /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				512D61CC231D8A6E000B97EA /* String+ColorMixer.swift */,
-				512D61C9231D8A6E000B97EA /* UIColor+Blending.swift */,
-				512D61C6231D8A6E000B97EA /* UIColor+ColorMixer.swift */,
-				512D61CB231D8A6E000B97EA /* UIColor+Sorting.swift */,
+				512D61DE231D91B9000B97EA /* UIColor+RFValues.swift */,
+				512D61E0231D91FB000B97EA /* UIColor+RFBlending.swift */,
+				512D61E2231D920E000B97EA /* UIColor+RFGrouping.swift */,
+				512D61E4231D921B000B97EA /* UIColor+RFSorting.swift */,
+				512D61DC231D9196000B97EA /* String+RFColor.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -402,11 +405,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512D61D4231D8A6E000B97EA /* String+ColorMixer.swift in Sources */,
 				C777195DE2F9948C1C10DD51450A8B28 /* RFUIColor-dummy.m in Sources */,
-				512D61D3231D8A6E000B97EA /* UIColor+Sorting.swift in Sources */,
-				512D61D1231D8A6E000B97EA /* UIColor+Blending.swift in Sources */,
-				512D61CE231D8A6E000B97EA /* UIColor+ColorMixer.swift in Sources */,
+				512D61E5231D921B000B97EA /* UIColor+RFSorting.swift in Sources */,
+				512D61DF231D91B9000B97EA /* UIColor+RFValues.swift in Sources */,
+				512D61DD231D9196000B97EA /* String+RFColor.swift in Sources */,
+				512D61E1231D91FC000B97EA /* UIColor+RFBlending.swift in Sources */,
+				512D61E3231D920E000B97EA /* UIColor+RFGrouping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

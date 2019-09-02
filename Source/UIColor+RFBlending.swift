@@ -1,6 +1,6 @@
 //
-//  UIColor+Blending.swift
-//  ColorMixer
+//  UIColor+RFBlending.swift
+//  RFUIColor
 //
 //  Created by Richard Fa on 2019-01-05.
 //
@@ -9,6 +9,13 @@ import UIKit
 
 extension UIColor {
 
+    /// Creates a `UIColor`, with the rgb values combined between `self` and `color`, with the `distribution` determining the balance of the rgb values from `self` and `color`.
+    ///
+    /// - Parameters:
+    ///   - color:          The other `UIColor` value that will be blended with `self`.
+    ///   - distribution:   The `CGFloat` value that determines the balance between the colors, `0.5` (evenly distributed) by default.
+    ///
+    /// - Returns: The new `UIColor` result from the blend.
     func blend(with color: UIColor,
                at distribution: CGFloat = 0.5) -> UIColor {
         var red1: CGFloat = 0.0
@@ -29,6 +36,13 @@ extension UIColor {
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 
+    /// Creates a `UIColor`, with the rgb values combined between all the values in `colors`, with the `distribution` with an array of values, each determining the percentage of distribution of the color of the same index in `colors`.
+    ///
+    /// - Parameters:
+    ///   - colors:         The `Array` containing `UIColor` values that will be blended.
+    ///   - distribution:   The `Array` containing `CGFloat` values that determines the percentage of distribution of the colors, with the total sum being 1.0, `[]` (evenly distributed or `1.0/colors.count`) by default.
+    ///
+    /// - Returns: The new `UIColor` result from the blend.
     static func blend(colors: [UIColor],
                       at distribution: [CGFloat] = [CGFloat]()) -> UIColor {
         var red: CGFloat = 0.0

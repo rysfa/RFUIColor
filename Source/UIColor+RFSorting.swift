@@ -1,6 +1,6 @@
 //
-//  UIColor+Sorting.swift
-//  ColorMixer
+//  UIColor+RFSorting.swift
+//  RFUIColor
 //
 //  Created by Richard Fa on 2019-01-05.
 //
@@ -14,6 +14,14 @@ enum SortColorsBy {
 
 extension UIColor {
 
+    /// Creates a `Array` of `UIColor`, that takes in all the `UIColor` values in `colors` and rearranges the values based on the sorting method `sort` and the order `ascending`.
+    ///
+    /// - Parameters:
+    ///   - colors:     The `Array` of `UIColor` values that will be sorted.
+    ///   - sort:       The `SortColorsBy` sorting method.
+    ///   - ascending:  The `Bool` value of whether to order by ascending or descending order, `true` by default.
+    ///
+    /// - Returns: The new `Array` of `UIColor` result from the sorting.
     static func sort(colors: [UIColor],
                      sortedBy sort: SortColorsBy,
                      ascending: Bool = true) -> [UIColor] {
@@ -25,6 +33,14 @@ extension UIColor {
         })
     }
 
+    /// Creates a `Array` of `String` hexadecimal values, that takes in all the `String` hexadecimal values in `colors` and rearranges the values based on the sorting method `sort` and the order `ascending`.
+    ///
+    /// - Parameters:
+    ///   - colors:     The `Array` of `String` hexadecimal values that will be sorted.
+    ///   - sort:       The `SortColorsBy` sorting method.
+    ///   - ascending:  The `Bool` value of whether to order by ascending or descending order, `true` by default.
+    ///
+    /// - Returns: The new `Array` of `String` hexadecimal values result from the sorting.
     static func sort(hexValues colors: [String],
                      sortedBy sort: SortColorsBy,
                      ascending: Bool = true) -> [String] {
@@ -42,20 +58,14 @@ extension UIColor {
         })
     }
 
-    fileprivate static func compare(colorA: UIColor,
-                                    colorB: UIColor,
-                                    sortedBy: SortColorsBy,
-                                    ascending: Bool = true) -> Bool {
-        switch sortedBy {
-        case .brightness:
-            let orderedIfAscending = colorA.brightness > colorB.brightness
-            return ascending ? orderedIfAscending : !orderedIfAscending
-        case .hue:
-            let orderedIfAscending = colorA.hue > colorB.hue
-            return ascending ? orderedIfAscending : !orderedIfAscending
-        }
-    }
-
+    /// Creates a `Array` of `UIColor`, that takes in all the `UIColor` values in `colors` and rearranges the values based on closest matching `UIColor` in `segments` and the order `ascending`.
+    ///
+    /// - Parameters:
+    ///   - colors:     The `Array` of `UIColor` values that will be sorted.
+    ///   - segments:   The `Array` containing `UIColor` values that the `colors` will be sorted by.
+    ///   - ascending:  The `Bool` value of whether to order by ascending or descending order, `true` by default.
+    ///
+    /// - Returns: The new `Array` of `UIColor` result from the sorting.
     static func sort(colors: [UIColor],
                      into segments: [UIColor],
                      ascending: Bool = true) -> [UIColor] {
@@ -67,6 +77,14 @@ extension UIColor {
         })
     }
 
+    /// Creates a `Array` of `String` hexadecimal values, that takes in all the `String` hexadecimal values in `colors` and rearranges the values based on closest matching `String` hexadecimal value in `segments` and the order `ascending`.
+    ///
+    /// - Parameters:
+    ///   - colors:     The `Array` of `String` hexadecimal values that will be sorted.
+    ///   - segments:   The `Array` containing `String` hexadecimal values that the `colors` will be sorted by.
+    ///   - ascending:  The `Bool` value of whether to order by ascending or descending order, `true` by default.
+    ///
+    /// - Returns: The new `Array` of `String` hexadecimal values result from the sorting.
     static func sort(hexValues colors: [String],
                      into segments: [String],
                      ascending: Bool = true) -> [String] {
@@ -88,6 +106,20 @@ extension UIColor {
                            into: colorSegments,
                            ascending: ascending)
         })
+    }
+
+    fileprivate static func compare(colorA: UIColor,
+                                    colorB: UIColor,
+                                    sortedBy: SortColorsBy,
+                                    ascending: Bool = true) -> Bool {
+        switch sortedBy {
+        case .brightness:
+            let orderedIfAscending = colorA.brightness > colorB.brightness
+            return ascending ? orderedIfAscending : !orderedIfAscending
+        case .hue:
+            let orderedIfAscending = colorA.hue > colorB.hue
+            return ascending ? orderedIfAscending : !orderedIfAscending
+        }
     }
 
     fileprivate static func compare(colorA: UIColor,
