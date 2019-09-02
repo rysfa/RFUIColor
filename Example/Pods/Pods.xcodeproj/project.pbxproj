@@ -18,8 +18,10 @@
 		512D61E3231D920E000B97EA /* UIColor+RFGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61E2231D920E000B97EA /* UIColor+RFGrouping.swift */; };
 		512D61E5231D921B000B97EA /* UIColor+RFSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61E4231D921B000B97EA /* UIColor+RFSorting.swift */; };
 		512D61E9231DB0DD000B97EA /* RFColorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D61E8231DB0DD000B97EA /* RFColorLibrary.swift */; };
-		512D61F2231DB21C000B97EA /* segments.json in Resources */ = {isa = PBXBuildFile; fileRef = 512D61F0231DB21C000B97EA /* segments.json */; };
-		512D61F3231DB21C000B97EA /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 512D61F1231DB21C000B97EA /* colors.json */; };
+		512D61F6231DB58A000B97EA /* Sample Colors with Names.json in Resources */ = {isa = PBXBuildFile; fileRef = 512D61F4231DB58A000B97EA /* Sample Colors with Names.json */; };
+		512D61F7231DB58A000B97EA /* Sample Segments.json in Resources */ = {isa = PBXBuildFile; fileRef = 512D61F5231DB58A000B97EA /* Sample Segments.json */; };
+		512D61F9231DB5AA000B97EA /* Sample Colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 512D61F8231DB5AA000B97EA /* Sample Colors.json */; };
+		512D61FB231DB5B1000B97EA /* Sample Segments with Names.json in Resources */ = {isa = PBXBuildFile; fileRef = 512D61FA231DB5B1000B97EA /* Sample Segments with Names.json */; };
 		7A2042365AAE03E31D86C657559AD63B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		A3447838E0E382778B6A86409B984FC9 /* Pods-RFUIColor_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BFB972B47417A01DB4E1F3968A8BC47 /* Pods-RFUIColor_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B300B51E09D6607A85ADD8CEDBB3F83F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -62,8 +64,10 @@
 		512D61E2231D920E000B97EA /* UIColor+RFGrouping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RFGrouping.swift"; sourceTree = "<group>"; };
 		512D61E4231D921B000B97EA /* UIColor+RFSorting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RFSorting.swift"; sourceTree = "<group>"; };
 		512D61E8231DB0DD000B97EA /* RFColorLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFColorLibrary.swift; sourceTree = "<group>"; };
-		512D61F0231DB21C000B97EA /* segments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = segments.json; sourceTree = "<group>"; };
-		512D61F1231DB21C000B97EA /* colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
+		512D61F4231DB58A000B97EA /* Sample Colors with Names.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Sample Colors with Names.json"; sourceTree = "<group>"; };
+		512D61F5231DB58A000B97EA /* Sample Segments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Sample Segments.json"; sourceTree = "<group>"; };
+		512D61F8231DB5AA000B97EA /* Sample Colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Sample Colors.json"; sourceTree = "<group>"; };
+		512D61FA231DB5B1000B97EA /* Sample Segments with Names.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Sample Segments with Names.json"; sourceTree = "<group>"; };
 		57B28FE11DAAD65A89F36AC8481055BC /* RFUIColor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RFUIColor-umbrella.h"; sourceTree = "<group>"; };
 		624353C73EA4FF7BBDFD22BBDEECEF41 /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		690BA436268A9ED515BFBDF05A613F43 /* Pods-RFUIColor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFUIColor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,8 +142,10 @@
 		512D61EF231DB21C000B97EA /* Sample JSON Files */ = {
 			isa = PBXGroup;
 			children = (
-				512D61F0231DB21C000B97EA /* segments.json */,
-				512D61F1231DB21C000B97EA /* colors.json */,
+				512D61F8231DB5AA000B97EA /* Sample Colors.json */,
+				512D61F4231DB58A000B97EA /* Sample Colors with Names.json */,
+				512D61F5231DB58A000B97EA /* Sample Segments.json */,
+				512D61FA231DB5B1000B97EA /* Sample Segments with Names.json */,
 			);
 			path = "Sample JSON Files";
 			sourceTree = "<group>";
@@ -396,8 +402,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512D61F2231DB21C000B97EA /* segments.json in Resources */,
-				512D61F3231DB21C000B97EA /* colors.json in Resources */,
+				512D61F7231DB58A000B97EA /* Sample Segments.json in Resources */,
+				512D61F9231DB5AA000B97EA /* Sample Colors.json in Resources */,
+				512D61F6231DB58A000B97EA /* Sample Colors with Names.json in Resources */,
+				512D61FB231DB5B1000B97EA /* Sample Segments with Names.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

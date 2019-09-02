@@ -114,7 +114,7 @@ class RFColorLibrary {
 
     func downloadColors(withCompletion completion: (() -> Void)? = nil) {
         let session = URLSession(configuration: .default)
-        //        guard let url = URL(string: "https://raw.githubusercontent.com/rysfa/ColorMixer/master/ColorMixer/colors.json") else {
+//        guard let url = URL(string: "https://raw.githubusercontent.com/rysfa/ColorMixer/master/ColorMixer/colors.json") else {
         guard let path = Bundle.main.path(forResource: "colors", ofType: "json", inDirectory: nil, forLocalization: nil) else {
             completion?()
             return
