@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RFUIColor_Example' do
+  pod 'RFUIColor', :path => '../'
+
+  target 'RFUIColor_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

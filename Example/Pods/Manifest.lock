@@ -1,0 +1,16 @@
+PODS:
+  - RFUIColor (0.1.0)
+
+DEPENDENCIES:
+  - RFUIColor (from `../`)
+
+EXTERNAL SOURCES:
+  RFUIColor:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RFUIColor: 26d17b3f6ffe623b179dd1d2aa11dccccf9cddc9
+
+PODFILE CHECKSUM: 34ed494b91286c6eca216b1b9e216ee4e038f99e
+
+COCOAPODS: 1.7.5
