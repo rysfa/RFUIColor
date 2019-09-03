@@ -19,37 +19,28 @@ enum RFColorLibrarySortBy {
     case brightness
 }
 
+/// An optional data manager for maintaining all list of colors, and handling the downloading, as well as the sorting and grouping of the colors.
 class RFColorLibrary {
 
     // MARK: Class Variables
 
     /// The `RFColorLibrary` shared instance, would be treated as the primary source and is globally accessible.
-    ///
-    /// - Returns: The `RFColorLibrary` shared instance.
     static let main = RFColorLibrary()
 
     // MARK: Variables
 
     /// The `Array` of `String` hexadecimal values of `rawColors` sorted by the `sortBy` sorting method.
-    ///
-    /// - Returns: The sorted `Array` of `String` hexadecimal values.
     var colors: [String] {
         return sortColors()
     }
 
-    /// The `RFColorLibrarySortBy` sorting method that is applied to the `colors`.
-    ///
-    /// - Returns: The `RFColorLibrarySortBy` sorting method. `segment` by default.
+    /// The `RFColorLibrarySortBy` sorting method that is applied to the `colors`. `segment` by default.
     var sortBy: RFColorLibrarySortBy = .segment
 
-    /// The `Bool` value ordering that is applied to the `colors`.
-    ///
-    /// - Returns: The `Bool` order value. `true` by default.
+    /// The `Bool` value ordering that is applied to the `colors`. `true` by default.
     var ascending: Bool = true
 
     /// The `Dictionary` with a key of `String` hexadecimal value and a value of `String` color name, of all the colors.
-    ///
-    /// - Returns: The `Dictionary` with a key of `String` hexadecimal value and a value of `String` color name.
     var rawColors = [String : String]() {
         didSet {
             sortedColorsTable.removeAll()
@@ -57,8 +48,6 @@ class RFColorLibrary {
     }
 
     /// The `Array` of `String` hexadecimal values, of all the segments.
-    ///
-    /// - Returns: The `Array` of `String` hexadecimal values.
     var rawSegments = [String]() {
         didSet {
             sortedColorsTable.removeValue(forKey: .segment)

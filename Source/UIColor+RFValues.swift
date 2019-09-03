@@ -15,10 +15,8 @@ extension UIColor {
 
     // MARK: Variables
 
-    /// The hue value of `self`.
+    /// The hue value of `self`. The value can only be between 0.0 and 1.0.
     /// Reference: https://en.wikipedia.org/wiki/Hue
-    ///
-    /// - Returns: The `CGFloat` value, between 0.0 and 1.0.
     var hue: CGFloat {
         var hue: CGFloat = 0
         self.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
@@ -27,8 +25,6 @@ extension UIColor {
 
     /// The hexadecimal value of `self`, including the prefixed octothorpe.
     /// Reference: https://en.wikipedia.org/wiki/Web_colors
-    ///
-    /// - Returns: The `String` hexadecimal value.
     var hexValue: String {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -40,10 +36,8 @@ extension UIColor {
                       lroundf(Float(blue * 255)))
     }
 
-    /// The level of brightness of `self`.
+    /// The level of brightness of `self`. The value can only be between 0.0 and 1.0 (higher value representing higher brightness).
     /// Reference: https://en.wikipedia.org/wiki/Brightness
-    ///
-    /// - Returns: The `CGFloat` value, between 0.0 and 1.0 (higher value representing higher brightness).
     var brightness: CGFloat {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -54,8 +48,6 @@ extension UIColor {
 
     /// The complementary `UIColor` of `self`.
     /// Reference: https://en.wikipedia.org/wiki/Complementary_colors
-    ///
-    /// - Returns: The `UIColor` value.
     var complement: UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
