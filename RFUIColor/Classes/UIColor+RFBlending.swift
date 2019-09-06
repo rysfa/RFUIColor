@@ -18,8 +18,8 @@ extension UIColor {
     ///   - distribution:   The `CGFloat` value that determines the balance between the colors, `0.5` (evenly distributed) by default.
     ///
     /// - Returns: The new `UIColor` result from the blend.
-    func blend(with color: UIColor,
-               at distribution: CGFloat = 0.5) -> UIColor {
+    public func blend(with color: UIColor,
+                      at distribution: CGFloat = 0.5) -> UIColor {
         var red1: CGFloat = 0.0
         var green1: CGFloat = 0.0
         var blue1: CGFloat = 0.0
@@ -47,8 +47,8 @@ extension UIColor {
     ///   - distribution:   The `Array` containing `CGFloat` values that determines the percentage of distribution of the colors, with the total sum being 1.0, `[]` (evenly distributed or `1.0/colors.count`) by default.
     ///
     /// - Returns: The new `UIColor` result from the blend.
-    static func blend(colors: [UIColor],
-                      at distribution: [CGFloat] = [CGFloat]()) -> UIColor {
+    public static func blend(colors: [UIColor],
+                             at distribution: [CGFloat] = [CGFloat]()) -> UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0

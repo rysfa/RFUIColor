@@ -12,7 +12,7 @@ extension String {
     // MARK: Variables
 
     /// The `UIColor` value of the hexadecimal value of `self`. If `self` is not a valid hexadecimal value, returns nil.
-    var color: UIColor? {
+    public var color: UIColor? {
         guard isHexString() else {
             return nil
         }
@@ -31,12 +31,12 @@ extension String {
     }
 
     /// The `Bool` indicator of whether or not `self` is a a partial string of a hexadecimal value (e.g. if the string contains valid hexadecimal values, but is not necessarily a full value).
-    var containsValidHexValues: Bool {
+    public var containsValidHexValues: Bool {
         return isHexString(isComplete: false)
     }
 
     /// The `Bool` indicator of whether or not `self` is a valid hexadecimal value.
-    var isValidHexValue: Bool {
+    public var isValidHexValue: Bool {
         return isHexString(isComplete: true)
     }
 

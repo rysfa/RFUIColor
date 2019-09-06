@@ -7,48 +7,48 @@
 
 import UIKit
 
-let RFSampleFolderPath: String = "https://raw.githubusercontent.com/rysfa/RFUIColor/master/Sample%20JSON%20Files/"
-let RFSampleColorsFileName: String = "Sample%20Colors.json"
-let RFSampleColorsWithNamesFileName: String = "Sample%20Colors%20with%20Names.json"
-let RFSampleSegmentsFileName: String = "Sample%20Segments.json"
-let RFSampleSegmentsWithNamesFileName: String = "Sample%20Segments%20with%20Names.json"
+fileprivate let RFSampleFolderPath: String = "https://raw.githubusercontent.com/rysfa/RFUIColor/master/Sample%20JSON%20Files/"
+fileprivate let RFSampleColorsFileName: String = "Sample%20Colors.json"
+fileprivate let RFSampleColorsWithNamesFileName: String = "Sample%20Colors%20with%20Names.json"
+fileprivate let RFSampleSegmentsFileName: String = "Sample%20Segments.json"
+fileprivate let RFSampleSegmentsWithNamesFileName: String = "Sample%20Segments%20with%20Names.json"
 
-enum RFColorLibrarySortBy {
+public enum RFColorLibrarySortBy {
     case segment
     case hue
     case brightness
 }
 
 /// An optional data manager for maintaining all list of colors, and handling the downloading, as well as the sorting and grouping of the colors.
-class RFColorLibrary {
+public class RFColorLibrary {
 
     // MARK: Class Variables
 
     /// The `RFColorLibrary` shared instance, would be treated as the primary source and is globally accessible.
-    static let main = RFColorLibrary()
+    public static let main = RFColorLibrary()
 
     // MARK: Variables
 
     /// The `Array` of `String` hexadecimal values of `rawColors` sorted by the `sortBy` sorting method.
-    var colors: [String] {
+    public var colors: [String] {
         return sortColors()
     }
 
     /// The `RFColorLibrarySortBy` sorting method that is applied to the `colors`. `segment` by default.
-    var sortBy: RFColorLibrarySortBy = .segment
+    public var sortBy: RFColorLibrarySortBy = .segment
 
     /// The `Bool` value ordering that is applied to the `colors`. `true` by default.
-    var ascending: Bool = true
+    public var ascending: Bool = true
 
     /// The `Dictionary` with a key of `String` hexadecimal value and a value of `String` color name, of all the colors.
-    var rawColors = [String : String]() {
+    public var rawColors = [String : String]() {
         didSet {
             sortedColorsTable.removeAll()
         }
     }
 
     /// The `Array` of `String` hexadecimal values, of all the segments.
-    var rawSegments = [String]() {
+    public var rawSegments = [String]() {
         didSet {
             sortedColorsTable.removeValue(forKey: .segment)
         }
@@ -62,7 +62,9 @@ class RFColorLibrary {
     ///   - colorsURL:      The `URL` for downloading the `colors`.
     ///   - segmentsURL:    The `URL` for downloading the `segments`.
     ///   - completion:     The completion block called after both the colors and segments have been updated.
-    func download(colors colorsURL: URL?, segments segmentsURL: URL?, with completion: (() -> Void)? = nil) {
+    public func download(colors colorsURL: URL?,
+                         segments segmentsURL: URL?,
+                         with completion: (() -> Void)? = nil) {
         let dispatchGroup = DispatchGroup()
 
         if let colorsURL = colorsURL {
@@ -88,7 +90,7 @@ class RFColorLibrary {
     ///
     /// - Parameters:
     ///   - completion: The completion block called after both the colors and segments have been updated.
-    func downloadSampleColorsAndSegments(with completion: (() -> Void)? = nil) {
+    public func downloadSampleColorsAndSegments(with completion: (() -> Void)? = nil) {
         download(colors: URL(string: RFSampleFolderPath + RFSampleColorsFileName),
                  segments: URL(string: RFSampleFolderPath + RFSampleSegmentsFileName)) {
             completion?()
@@ -100,7 +102,8 @@ class RFColorLibrary {
     /// - Parameters:
     ///   - url:        The `URL` for downloading the `colors`.
     ///   - completion: The completion block called after the colors have been updated. `success` returns whether `rawColors` was successfully updated.
-    func downloadColors(from url: URL, with completion: ((_ success: Bool) -> Void)? = nil) {
+    public func downloadColors(from url: URL,
+                               with completion: ((_ success: Bool) -> Void)? = nil) {
         fetch(from: url) { [weak self] (data: Any?) in
             guard let data = data else {
                 completion?(false)
@@ -139,7 +142,8 @@ class RFColorLibrary {
     /// - Parameters:
     ///   - url:        The `URL` for downloading the `segments`.
     ///   - completion: The completion block called after the segments have been updated. `success` returns whether `rawColors` was successfully updated.
-    func downloadSegments(from url: URL, with completion: ((_ success: Bool) -> Void)? = nil) {
+    public func downloadSegments(from url: URL,
+                                 with completion: ((_ success: Bool) -> Void)? = nil) {
         fetch(from: url) { [weak self] (data: Any?) in
             guard let data = data else {
                 completion?(false)
@@ -189,7 +193,8 @@ class RFColorLibrary {
         return sortedColors
     }
 
-    fileprivate func fetch(from url: URL, with completion: ((Any?) -> Void)? = nil) {
+    fileprivate func fetch(from url: URL,
+                           with completion: ((Any?) -> Void)? = nil) {
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
             guard let data = data else {

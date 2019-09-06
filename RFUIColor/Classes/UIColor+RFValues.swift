@@ -17,7 +17,7 @@ extension UIColor {
 
     /// The hue value of `self`. The value can only be between 0.0 and 1.0.
     /// Reference: https://en.wikipedia.org/wiki/Hue
-    var hue: CGFloat {
+    public var hue: CGFloat {
         var hue: CGFloat = 0
         self.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
         return hue
@@ -25,7 +25,7 @@ extension UIColor {
 
     /// The hexadecimal value of `self`, including the prefixed octothorpe.
     /// Reference: https://en.wikipedia.org/wiki/Web_colors
-    var hexValue: String {
+    public var hexValue: String {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
@@ -38,7 +38,7 @@ extension UIColor {
 
     /// The level of brightness of `self`. The value can only be between 0.0 and 1.0 (higher value representing higher brightness).
     /// Reference: https://en.wikipedia.org/wiki/Brightness
-    var brightness: CGFloat {
+    public var brightness: CGFloat {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
@@ -48,7 +48,7 @@ extension UIColor {
 
     /// The complementary `UIColor` of `self`.
     /// Reference: https://en.wikipedia.org/wiki/Complementary_colors
-    var complement: UIColor {
+    public var complement: UIColor {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
@@ -67,7 +67,7 @@ extension UIColor {
     ///   - color:  The other `UIColor` value that will be compared with `self`.
     ///
     /// - Returns: The `CGFloat` value, between 0.0 and 1.0 (higher value representing higher similarity).
-    func similarity(to color: UIColor) -> CGFloat {
+    public func similarity(to color: UIColor) -> CGFloat {
         let difference: CGFloat = CGFloat(rgbValueDifference(to: color)) / CGFloat((RFRGBRedWeight + RFRGBBlueWeight + RFRGBGreenWeight))
         return 1.0 - difference
     }
@@ -78,7 +78,7 @@ extension UIColor {
     ///   - color:  The other `UIColor` value that will be compared with `self`.
     ///
     /// - Returns: The `Int` value, between 0 and 1,000 (higher value representing higher difference).
-    func rgbValueDifference(to color: UIColor) -> Int {
+    public func rgbValueDifference(to color: UIColor) -> Int {
         var red1: CGFloat = 0.0
         var green1: CGFloat = 0.0
         var blue1: CGFloat = 0.0
@@ -100,7 +100,7 @@ extension UIColor {
     ///   - colors:  The `Array` of `UIColor` values.
     ///
     /// - Returns: The `Int` resulting index.
-    func indexForBestMatch(in colors: [UIColor]) -> Int {
+    public func indexForBestMatch(in colors: [UIColor]) -> Int {
         var bestMatchIndex: Int = -1
         for color in colors {
             if bestMatchIndex < 0 || rgbValueDifference(to: color) < rgbValueDifference(to: colors[bestMatchIndex]) {
@@ -118,7 +118,7 @@ extension UIColor {
     ///   - colors:  The `Array` of `String` hexadecimal values.
     ///
     /// - Returns: The `Int` resulting index.
-    func indexForBestMatch(in hexValues: [String]) -> Int {
+    public func indexForBestMatch(in hexValues: [String]) -> Int {
         var allColors = [UIColor]()
         for hexValue in hexValues {
             if let color = hexValue.color {

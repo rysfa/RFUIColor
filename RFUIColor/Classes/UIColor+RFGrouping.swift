@@ -18,7 +18,8 @@ extension UIColor {
     ///   - segments:   The `Array` containing `UIColor` values that the `colors` will be grouped by.
     ///
     /// - Returns: The new `Array` of `Array` of `UIColor` result from the grouping.
-    static func group(colors: [UIColor], into segments: [UIColor]) -> [[UIColor]] {
+    public static func group(colors: [UIColor],
+                             into segments: [UIColor]) -> [[UIColor]] {
         guard segments.count > 1 else {
             return [colors]
         }
@@ -42,7 +43,8 @@ extension UIColor {
     ///   - segments:   The `Array` containing `String` hexadecimal values that the `colors` will be grouped by.
     ///
     /// - Returns: The new `Array` of `Array` of `String` result from the grouping.
-    static func group(hexValues colors: [String], into segments: [String]) -> [[String]] {
+    public static func group(hexValues colors: [String],
+                             into segments: [String]) -> [[String]] {
         guard segments.count > 1 else {
             return [colors]
         }
