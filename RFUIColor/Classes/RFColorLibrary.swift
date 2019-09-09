@@ -37,9 +37,6 @@ public class RFColorLibrary {
     /// The `RFColorLibrarySortBy` sorting method that is applied to the `colors`. `segment` by default.
     public var sortBy: RFColorLibrarySortBy = .segment
 
-    /// The `Bool` value ordering that is applied to the `colors`. `true` by default.
-    public var ascending: Bool = true
-
     /// The `Dictionary` with a key of `String` hexadecimal value and a value of `String` color name, of all the colors.
     public var rawColors = [String : String]() {
         didSet {
@@ -59,41 +56,43 @@ public class RFColorLibrary {
     /// Updates the `rawColors` and `rawSegments` values from downloading the `colorsURL` and `segmentsURL` parameters.
     ///
     /// - Parameters:
-    ///   - colorsURL:      The `URL` for downloading the `colors`.
-    ///   - segmentsURL:    The `URL` for downloading the `segments`.
-    ///   - completion:     The completion block called after both the colors and segments have been updated.
+    ///   - colorsURL:                  The `URL` for downloading the `colors`.
+    ///   - segmentsURL:                The `URL` for downloading the `segments`.
+    ///   - downloadColorsCompletion:   The completion block called after the colors have been updated. `success` returns whether the request was successful. `error` returns the optional error object from the response from downloading colors.
+    ///   - downloadSegmentsCompletion: The completion block called after the segments have been updated. `success` returns whether the request was successful. `error` returns the optional error object from the response from downloading segments.
     public func download(colors colorsURL: URL?,
                          segments segmentsURL: URL?,
-                         with completion: (() -> Void)? = nil) {
-        let dispatchGroup = DispatchGroup()
-
+                         withColors downloadColorsCompletion: ((_ success: Bool, _ error: Error?) -> Void)? = nil,
+                         withSegments downloadSegmentsCompletion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
         if let colorsURL = colorsURL {
-            dispatchGroup.enter()
-            downloadColors(from: colorsURL) { (success: Bool) in
-                dispatchGroup.leave()
+            downloadColors(from: colorsURL) { (success: Bool, error: Error?) in
+                downloadColorsCompletion?(success, error)
             }
+        } else {
+            downloadColorsCompletion?(false, nil)
         }
 
         if let segmentsURL = segmentsURL {
-            dispatchGroup.enter()
-            downloadSegments(from: segmentsURL) { (success: Bool) in
-                dispatchGroup.leave()
+            downloadSegments(from: segmentsURL) { (success: Bool, error: Error?) in
+                downloadSegmentsCompletion?(success, error)
             }
-        }
-
-        dispatchGroup.notify(queue: .main) {
-            completion?()
+        } else {
+            downloadSegmentsCompletion?(false, nil)
         }
     }
 
     /// Updates the `rawColors` and `rawSegments` values from downloading the sample colors and segments.
     ///
     /// - Parameters:
-    ///   - completion: The completion block called after both the colors and segments have been updated.
-    public func downloadSampleColorsAndSegments(with completion: (() -> Void)? = nil) {
-        download(colors: URL(string: RFSampleFolderPath + RFSampleColorsFileName),
-                 segments: URL(string: RFSampleFolderPath + RFSampleSegmentsFileName)) {
-            completion?()
+    ///   - downloadColorsCompletion:   The completion block called after the colors have been updated. `success` returns whether the request was successful. `error` returns the optional error object from the response from downloading colors.
+    ///   - downloadSegmentsCompletion: The completion block called after the segments have been updated. `success` returns whether the request was successful. `error` returns the optional error object from the response from downloading segments.
+    public func downloadSampleColorsAndSegments(withColors downloadColorsCompletion: ((_ success: Bool, _ error: Error?) -> Void)? = nil,
+                                                withSegments downloadSegmentsCompletion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
+        download(colors: URL(string: RFSampleFolderPath + RFSampleColorsWithNamesFileName),
+                 segments: URL(string: RFSampleFolderPath + RFSampleSegmentsWithNamesFileName), withColors: { (success: Bool, error: Error?) in
+                    downloadColorsCompletion?(success, error)
+        }) { (success: Bool, error: Error?) in
+            downloadSegmentsCompletion?(success, error)
         }
     }
 
@@ -101,12 +100,12 @@ public class RFColorLibrary {
     ///
     /// - Parameters:
     ///   - url:        The `URL` for downloading the `colors`.
-    ///   - completion: The completion block called after the colors have been updated. `success` returns whether `rawColors` was successfully updated.
+    ///   - completion: The completion block called after the colors have been updated. `success` returns whether `rawColors` was successfully updated. `error` returns the optional error object from the response.
     public func downloadColors(from url: URL,
-                               with completion: ((_ success: Bool) -> Void)? = nil) {
-        fetch(from: url) { [weak self] (data: Any?) in
+                               with completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
+        fetch(from: url) { [weak self] (data: Any?, error: Error?) in
             guard let data = data else {
-                completion?(false)
+                completion?(false, error)
                 return
             }
 
@@ -119,7 +118,7 @@ public class RFColorLibrary {
                         self?.rawColors[value] = name
                     }
                 }
-                completion?(true)
+                completion?(true, error)
             }
 
             if let json = data as? [String] {
@@ -130,10 +129,10 @@ public class RFColorLibrary {
                         self?.rawColors[value] = value
                     }
                 }
-                completion?(true)
+                completion?(true, error)
             }
 
-            completion?(false)
+            completion?(false, error)
         }
     }
 
@@ -141,12 +140,12 @@ public class RFColorLibrary {
     ///
     /// - Parameters:
     ///   - url:        The `URL` for downloading the `segments`.
-    ///   - completion: The completion block called after the segments have been updated. `success` returns whether `rawColors` was successfully updated.
+    ///   - completion: The completion block called after the segments have been updated. `success` returns whether `rawColors` was successfully updated. `error` returns the optional error object from the response.
     public func downloadSegments(from url: URL,
-                                 with completion: ((_ success: Bool) -> Void)? = nil) {
-        fetch(from: url) { [weak self] (data: Any?) in
+                                 with completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
+        fetch(from: url) { [weak self] (data: Any?, error: Error?) in
             guard let data = data else {
-                completion?(false)
+                completion?(false, error)
                 return
             }
 
@@ -159,7 +158,7 @@ public class RFColorLibrary {
                         self?.rawSegments.append(value)
                     }
                 }
-                completion?(true)
+                completion?(true, error)
             }
 
             if let json = data as? [String] {
@@ -170,10 +169,10 @@ public class RFColorLibrary {
                         self?.rawSegments.append(value)
                     }
                 }
-                completion?(true)
+                completion?(true, error)
             }
 
-            completion?(false)
+            completion?(false, error)
         }
     }
 
@@ -188,31 +187,31 @@ public class RFColorLibrary {
             return sortedColors
         }
         let allColors: [String] = Array(rawColors.keys)
-        let sortedColors = UIColor.sort(hexValues: allColors, into: rawSegments, ascending: ascending)
+        let sortedColors = UIColor.sort(hexValues: allColors, into: rawSegments, ascending: true)
         sortedColorsTable[sortBy] = sortedColors
         return sortedColors
     }
 
     fileprivate func fetch(from url: URL,
-                           with completion: ((Any?) -> Void)? = nil) {
+                           with completion: ((_ data: Any?, _ error: Error?) -> Void)? = nil) {
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
-            guard let data = data else {
-                completion?(nil)
+            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any] else {
+                completion?(nil, error)
                 return
             }
 
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : String] {
-                completion?(json)
+            if let json = rawJSON["colors"] as? [String : String] {
+                completion?(json, error)
                 return
             }
 
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String] {
-                completion?(json)
+            if let json = rawJSON["colors"] as? [String] {
+                completion?(json, error)
                 return
             }
 
-            completion?(nil)
+            completion?(nil, error)
         }
         dataTask.resume()
     }

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JaY-Xk-FdN">
-                                <rect key="frame" x="0.0" y="167" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="toz-jM-hgU">
                                     <size key="itemSize" width="50" height="50"/>
@@ -31,7 +31,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="RFColorLibraryCollectionViewCell" id="Prj-qE-wP4">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="RFColorLibraryCollectionViewCell" reuseIdentifier="RFColorLibraryCollectionViewCell" id="Prj-qE-wP4">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -45,17 +45,31 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="swe-b9-pAw"/>
                                 </connections>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YgC-Tv-Nae">
+                                <rect key="frame" x="68" y="40" width="239" height="29"/>
+                                <segments>
+                                    <segment title="Hue"/>
+                                    <segment title="Brightness"/>
+                                    <segment title="Groups"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didChangeSortByValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="BXq-q8-L7M"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="YgC-Tv-Nae" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="ClI-NB-cHg"/>
                             <constraint firstItem="JaY-Xk-FdN" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="E9e-Un-J5H"/>
+                            <constraint firstItem="JaY-Xk-FdN" firstAttribute="top" secondItem="YgC-Tv-Nae" secondAttribute="bottom" constant="20" id="MrO-S4-xim"/>
                             <constraint firstItem="JaY-Xk-FdN" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="eRp-CX-hC7"/>
+                            <constraint firstItem="YgC-Tv-Nae" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="inA-pt-Avr"/>
                             <constraint firstItem="JaY-Xk-FdN" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="rHy-jy-Z1E"/>
-                            <constraint firstItem="JaY-Xk-FdN" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="0.75" id="utJ-wI-WGb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="colorLibraryCollectionView" destination="JaY-Xk-FdN" id="a98-dD-crL"/>
+                        <outlet property="sortBySegmentedControl" destination="YgC-Tv-Nae" id="Y9T-8V-mam"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
