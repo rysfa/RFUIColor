@@ -1,12 +1,14 @@
 {
-    "#FF0000" : "Red",
-    "#FF8000" : "Orange",
-    "#FFFF00" : "Yellow",
-    "#00FF00" : "Green",
-    "#0000FF" : "Blue",
-    "#800080" : "Purple",
-    "#996633" : "Brown",
-    "#FFFFFF" : "White",
-    "#808080" : "Gray",
-    "#000000" : "Black"
+    "colors" : {
+        "#FF0000" : "Red",
+        "#FF8000" : "Orange",
+        "#FFFF00" : "Yellow",
+        "#00FF00" : "Green",
+        "#0000FF" : "Blue",
+        "#800080" : "Purple",
+        "#996633" : "Brown",
+        "#FFFFFF" : "White",
+        "#808080" : "Gray",
+        "#000000" : "Black"
+    }
 }
