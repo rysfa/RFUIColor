@@ -40,9 +40,12 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         buildColorLibraryFades()
 
-        colorGradientLayer.transform = CATransform3DMakeRotation(-.pi/2, 0.0, 0.0, 1.0)
+        colorGradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        colorGradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         colorGradientLayer.frame = colorGradientView.bounds
         colorGradientView.layer.insertSublayer(colorGradientLayer, at: 0)
+        colorGradientView.layer.borderWidth = 1.0
+        colorGradientView.layer.borderColor = UIColor.black.cgColor
     }
 
     @IBAction func didChangeOrderValue(_ sender: UISegmentedControl) {
@@ -76,13 +79,19 @@ class ViewController: UIViewController {
         }
         RFColorLibrary.main.ascending = orderSegmentedControl.selectedSegmentIndex == 0
         colorLibraryTableView.reloadData()
+
+        updateGradientView()
+
+        colorLibraryTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         colorLibraryTopFadeView.alpha = 0.0
         colorLibraryBottomFadeView.alpha = 1.0
+
     }
 
     fileprivate func updateGradientView() {
         var gradientColors = [CGColor]()
-        for colorHexValue in RFColorLibrary.main.rawSegments {
+        let allColorsInGradient = RFColorLibrary.main.sortBy == .segment ? RFColorLibrary.main.rawSegments : RFColorLibrary.main.colors
+        for colorHexValue in allColorsInGradient {
             if let color = colorHexValue.color {
                 gradientColors.append(color.cgColor)
             }
@@ -105,7 +114,6 @@ class ViewController: UIViewController {
             if success {
                 DispatchQueue.main.async {
                     self?.groupedSwitch.isEnabled = true
-                    self?.updateGradientView()
                 }
             }
         }

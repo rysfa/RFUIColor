@@ -103,7 +103,7 @@ public class RFColorLibrary {
     public func downloadSampleColorsAndSegments(withColors downloadColorsCompletion: ((_ success: Bool, _ error: Error?) -> Void)? = nil,
                                                 withSegments downloadSegmentsCompletion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
         download(colors: URL(string: RFSampleFolderPath + RFSampleColorsWithNamesFileName),
-                 segments: URL(string: RFSampleFolderPath + RFSampleSegmentsWithNamesFileName), withColors: { (success: Bool, error: Error?) in
+                 segments: URL(string: RFSampleFolderPath + RFSampleSegmentsFileName), withColors: { (success: Bool, error: Error?) in
                     downloadColorsCompletion?(success, error)
         }) { (success: Bool, error: Error?) in
             downloadSegmentsCompletion?(success, error)
@@ -133,6 +133,7 @@ public class RFColorLibrary {
                     }
                 }
                 completion?(true, error)
+                return
             }
 
             if let json = data as? [String] {
@@ -144,6 +145,7 @@ public class RFColorLibrary {
                     }
                 }
                 completion?(true, error)
+                return
             }
 
             completion?(false, error)
@@ -173,6 +175,7 @@ public class RFColorLibrary {
                     }
                 }
                 completion?(true, error)
+                return
             }
 
             if let json = data as? [String] {
@@ -184,6 +187,7 @@ public class RFColorLibrary {
                     }
                 }
                 completion?(true, error)
+                return
             }
 
             completion?(false, error)
