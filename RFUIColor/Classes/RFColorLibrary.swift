@@ -17,6 +17,17 @@ public enum RFColorLibrarySortBy {
     case segment
     case hue
     case brightness
+
+    func sortColorsBy() -> RFSortColorsBy? {
+        switch self {
+        case .hue:
+            return RFSortColorsBy.hue
+        case .brightness:
+            return RFSortColorsBy.brightness
+        default:
+            return nil
+        }
+    }
 }
 
 /// An optional data manager for maintaining all list of colors, and handling the downloading, as well as the sorting and grouping of the colors.
@@ -37,6 +48,9 @@ public class RFColorLibrary {
     /// The `RFColorLibrarySortBy` sorting method that is applied to the `colors`. `segment` by default.
     public var sortBy: RFColorLibrarySortBy = .segment
 
+    /// The `Bool` value ordering that is applied to the `colors`. `true` by default.
+    public var ascending: Bool = true
+
     /// The `Dictionary` with a key of `String` hexadecimal value and a value of `String` color name, of all the colors.
     public var rawColors = [String : String]() {
         didSet {
@@ -47,7 +61,7 @@ public class RFColorLibrary {
     /// The `Array` of `String` hexadecimal values, of all the segments.
     public var rawSegments = [String]() {
         didSet {
-            sortedColorsTable.removeValue(forKey: .segment)
+            sortedColorsTable.removeColors(ofSort: .segment)
         }
     }
 
@@ -151,7 +165,7 @@ public class RFColorLibrary {
 
             if let json = data as? [String : String] {
                 self?.rawSegments.removeAll()
-                self?.sortedColorsTable.removeValue(forKey: .segment)
+                self?.sortedColorsTable.removeColors(ofSort: .segment)
                 json.forEach { (tuple) in
                     let (value, _) = tuple
                     if value.isValidHexValue {
@@ -163,7 +177,7 @@ public class RFColorLibrary {
 
             if let json = data as? [String] {
                 self?.rawSegments.removeAll()
-                self?.sortedColorsTable.removeValue(forKey: .segment)
+                self?.sortedColorsTable.removeColors(ofSort: .segment)
                 json.forEach { (value) in
                     if value.isValidHexValue {
                         self?.rawSegments.append(value)
@@ -178,17 +192,25 @@ public class RFColorLibrary {
 
     // MARK: Private Variables
 
-    fileprivate var sortedColorsTable = [RFColorLibrarySortBy : [String]]()
+    fileprivate var sortedColorsTable = RFSortedColorsTable()
 
     // MARK: Private Functions
 
     fileprivate func sortColors() -> [String] {
-        if let sortedColors = sortedColorsTable[sortBy] {
+        if let sortedColors = sortedColorsTable.retrieveColors(for: sortBy, ascending: ascending) {
             return sortedColors
         }
         let allColors: [String] = Array(rawColors.keys)
-        let sortedColors = UIColor.sort(hexValues: allColors, into: rawSegments, ascending: true)
-        sortedColorsTable[sortBy] = sortedColors
+
+        var sortedColors = [String]()
+        if let sortColorsBy = sortBy.sortColorsBy() {
+            sortedColors = UIColor.sort(hexValues: allColors, sortedBy: sortColorsBy, ascending: ascending)
+        } else {
+            sortedColors = UIColor.sort(hexValues: allColors, into: rawSegments, ascending: ascending)
+        }
+        if sortedColors.count > 0 {
+            sortedColorsTable.save(sortedColors, ofSort: sortBy, ascending: ascending)
+        }
         return sortedColors
     }
 
@@ -215,4 +237,40 @@ public class RFColorLibrary {
         }
         dataTask.resume()
     }
+}
+
+fileprivate class RFSortedColorsTable {
+
+    fileprivate func retrieveColors(for sortBy: RFColorLibrarySortBy, ascending: Bool) -> [String]? {
+        let sortedColorsTableForSort = sortedColorsForSort(by: ascending)
+        guard let sortedColors = sortedColorsTableForSort[sortBy] else {
+            return nil
+        }
+        return sortedColors
+    }
+
+    fileprivate func save(_ colors: [String], ofSort sortBy: RFColorLibrarySortBy, ascending: Bool) {
+        if ascending {
+            ascSortedColorsTable[sortBy] = colors
+        } else {
+            desSortedColorsTable[sortBy] = colors
+        }
+    }
+
+    fileprivate func removeColors(ofSort sort: RFColorLibrarySortBy) {
+        ascSortedColorsTable.removeValue(forKey: sort)
+        desSortedColorsTable.removeValue(forKey: sort)
+    }
+
+    fileprivate func removeAll() {
+        ascSortedColorsTable.removeAll()
+        desSortedColorsTable.removeAll()
+    }
+
+    private func sortedColorsForSort(by ascending: Bool) -> [RFColorLibrarySortBy : [String]] {
+        return ascending ? ascSortedColorsTable : desSortedColorsTable
+    }
+
+    private var ascSortedColorsTable = [RFColorLibrarySortBy : [String]]()
+    private var desSortedColorsTable = [RFColorLibrarySortBy : [String]]()
 }

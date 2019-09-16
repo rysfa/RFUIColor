@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57BBBC7B5138A56C5EA57A7C /* Pods_RFUIColor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFA1C8D6646518DAE265DB3 /* Pods_RFUIColor_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A7F4B5B937C694B21EE87D4A /* Pods_RFUIColor_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2D3C98F15717572C5FC04F /* Pods_RFUIColor_Example.framework */; };
-		E06150DC9FAF2D425DF98DF5 /* Pods_RFUIColor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8AF9D0AE296C45AD53C7BE5 /* Pods_RFUIColor_Tests.framework */; };
+		CA473B7178889396ABE1083E /* Pods_RFUIColor_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE8D7E282B99F12E699FB59 /* Pods_RFUIColor_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,9 +29,9 @@
 
 /* Begin PBXFileReference section */
 		2A7EA3DA4C15671B0EDA4C1B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		3153A53FB97FF47A6C4BE3EB /* Pods-RFUIColor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Tests.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Tests/Pods-RFUIColor_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		367612B2636E9C5F65629325 /* Pods-RFUIColor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Tests/Pods-RFUIColor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4F2D3C98F15717572C5FC04F /* Pods_RFUIColor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5959BB8AF0C504B6B161CB67 /* Pods-RFUIColor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Example.debug.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5FA2E3FEFDE23B260D35B74C /* Pods-RFUIColor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Example.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example.release.xcconfig"; sourceTree = "<group>"; };
+		5FFA1C8D6646518DAE265DB3 /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* RFUIColor_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFUIColor_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,11 +42,11 @@
 		607FACE51AFB9204008FA782 /* RFUIColor_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RFUIColor_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		608C583C72FDF2A28DC8207B /* Pods-RFUIColor_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Example.debug.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		75D458EC39E6BFB15431DF10 /* Pods-RFUIColor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Tests/Pods-RFUIColor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9FE8D7E282B99F12E699FB59 /* Pods_RFUIColor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F8E440F94B8F2DF03256D1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		A7A48993A48105C5B4BF40B7 /* Pods-RFUIColor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Example.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example.release.xcconfig"; sourceTree = "<group>"; };
-		A8AF9D0AE296C45AD53C7BE5 /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76FFA02BF66B55E412C4C0B /* RFUIColor.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RFUIColor.podspec; path = ../RFUIColor.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D1B0856654F73F23DBFCF53F /* Pods-RFUIColor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Tests.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Tests/Pods-RFUIColor_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7F4B5B937C694B21EE87D4A /* Pods_RFUIColor_Example.framework in Frameworks */,
+				CA473B7178889396ABE1083E /* Pods_RFUIColor_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E06150DC9FAF2D425DF98DF5 /* Pods_RFUIColor_Tests.framework in Frameworks */,
+				57BBBC7B5138A56C5EA57A7C /* Pods_RFUIColor_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,10 +72,10 @@
 		3642483B81E9575AC7399D16 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				608C583C72FDF2A28DC8207B /* Pods-RFUIColor_Example.debug.xcconfig */,
-				A7A48993A48105C5B4BF40B7 /* Pods-RFUIColor_Example.release.xcconfig */,
-				367612B2636E9C5F65629325 /* Pods-RFUIColor_Tests.debug.xcconfig */,
-				3153A53FB97FF47A6C4BE3EB /* Pods-RFUIColor_Tests.release.xcconfig */,
+				5959BB8AF0C504B6B161CB67 /* Pods-RFUIColor_Example.debug.xcconfig */,
+				5FA2E3FEFDE23B260D35B74C /* Pods-RFUIColor_Example.release.xcconfig */,
+				75D458EC39E6BFB15431DF10 /* Pods-RFUIColor_Tests.debug.xcconfig */,
+				D1B0856654F73F23DBFCF53F /* Pods-RFUIColor_Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -88,7 +88,7 @@
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				3642483B81E9575AC7399D16 /* Pods */,
-				67FB6B2AC6304B20833C9688 /* Frameworks */,
+				AF00193160BF4F9AC883BFB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,11 +150,11 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		67FB6B2AC6304B20833C9688 /* Frameworks */ = {
+		AF00193160BF4F9AC883BFB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4F2D3C98F15717572C5FC04F /* Pods_RFUIColor_Example.framework */,
-				A8AF9D0AE296C45AD53C7BE5 /* Pods_RFUIColor_Tests.framework */,
+				9FE8D7E282B99F12E699FB59 /* Pods_RFUIColor_Example.framework */,
+				5FFA1C8D6646518DAE265DB3 /* Pods_RFUIColor_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,11 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RFUIColor_Example" */;
 			buildPhases = (
-				8F8977EDFBEB0123CB356C88 /* [CP] Check Pods Manifest.lock */,
+				C1619BBD52A2A66C304007B4 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				920F405F5B050E384D2DD1F1 /* [CP] Embed Pods Frameworks */,
+				45A459DC15997934294946E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,7 +185,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RFUIColor_Tests" */;
 			buildPhases = (
-				00D8D1C9124298ECED3E418B /* [CP] Check Pods Manifest.lock */,
+				C278DA1E92AC45DDF0988E32 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -262,29 +262,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00D8D1C9124298ECED3E418B /* [CP] Check Pods Manifest.lock */ = {
+		45A459DC15997934294946E1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RFUIColor/RFUIColor.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RFUIColor_Tests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RFUIColor.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F8977EDFBEB0123CB356C88 /* [CP] Check Pods Manifest.lock */ = {
+		C1619BBD52A2A66C304007B4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,22 +302,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		920F405F5B050E384D2DD1F1 /* [CP] Embed Pods Frameworks */ = {
+		C278DA1E92AC45DDF0988E32 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RFUIColor/RFUIColor.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RFUIColor.framework",
+				"$(DERIVED_FILE_DIR)/Pods-RFUIColor_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -481,7 +481,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 608C583C72FDF2A28DC8207B /* Pods-RFUIColor_Example.debug.xcconfig */;
+			baseConfigurationReference = 5959BB8AF0C504B6B161CB67 /* Pods-RFUIColor_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 55E55E84JS;
@@ -496,7 +496,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7A48993A48105C5B4BF40B7 /* Pods-RFUIColor_Example.release.xcconfig */;
+			baseConfigurationReference = 5FA2E3FEFDE23B260D35B74C /* Pods-RFUIColor_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 55E55E84JS;
@@ -511,7 +511,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 367612B2636E9C5F65629325 /* Pods-RFUIColor_Tests.debug.xcconfig */;
+			baseConfigurationReference = 75D458EC39E6BFB15431DF10 /* Pods-RFUIColor_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -532,7 +532,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3153A53FB97FF47A6C4BE3EB /* Pods-RFUIColor_Tests.release.xcconfig */;
+			baseConfigurationReference = D1B0856654F73F23DBFCF53F /* Pods-RFUIColor_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
