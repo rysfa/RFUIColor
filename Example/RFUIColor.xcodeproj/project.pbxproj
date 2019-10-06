@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0537B159D5F97651ACCD2C73 /* Pods_RFUIColor_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7B504AEDC4E56CCAB936420 /* Pods_RFUIColor_Example.framework */; };
 		5185FA0B2344E0960050C77B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FA0A2344E0960050C77B /* ViewModel.swift */; };
+		51CE59DF234A5CA80038D65C /* String+RFColorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE59DE234A5CA80038D65C /* String+RFColorTestCase.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		44217E60CEF91932AFE46815 /* Pods-RFUIColor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Tests.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Tests/Pods-RFUIColor_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5185FA0A2344E0960050C77B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		51C93E464167C95A9387A621 /* Pods-RFUIColor_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Tests/Pods-RFUIColor_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		51CE59DE234A5CA80038D65C /* String+RFColorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RFColorTestCase.swift"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RFUIColor_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFUIColor_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				51CE59DE234A5CA80038D65C /* String+RFColorTestCase.swift */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51CE59DF234A5CA80038D65C /* String+RFColorTestCase.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
