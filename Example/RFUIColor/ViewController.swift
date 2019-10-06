@@ -26,6 +26,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
+    let viewModel = ViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         colorLibraryTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
@@ -61,56 +63,28 @@ class ViewController: UIViewController {
     }
 
     fileprivate func updateColorLibrary() {
-        if groupedSwitch.isOn {
-            sortBySegmentedControl.isEnabled = false
-            RFColorLibrary.main.sortBy = .segment
-        } else {
-            sortBySegmentedControl.isEnabled = true
-            switch sortBySegmentedControl.selectedSegmentIndex {
-            case 0:
-                RFColorLibrary.main.sortBy = .hue
-                break
-            case 1:
-                RFColorLibrary.main.sortBy = .brightness
-                break
-            default:
-                break
-            }
-        }
-        RFColorLibrary.main.ascending = orderSegmentedControl.selectedSegmentIndex == 0
+        sortBySegmentedControl.isEnabled = !groupedSwitch.isOn
+        viewModel.updateColorLibrary(groupedSwitchIsOn: groupedSwitch.isOn, sortBySegmentedControlIndex: sortBySegmentedControl.selectedSegmentIndex, isAscending: orderSegmentedControl.selectedSegmentIndex == 0)
         colorLibraryTableView.reloadData()
 
-        updateGradientView()
+        colorGradientLayer.colors = viewModel.gradientColors()
 
         colorLibraryTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         colorLibraryTopFadeView.alpha = 0.0
         colorLibraryBottomFadeView.alpha = 1.0
-
-    }
-
-    fileprivate func updateGradientView() {
-        var gradientColors = [CGColor]()
-        let allColorsInGradient = RFColorLibrary.main.sortBy == .segment ? RFColorLibrary.main.rawSegments : RFColorLibrary.main.colors
-        for colorHexValue in allColorsInGradient {
-            if let color = colorHexValue.color {
-                gradientColors.append(color.cgColor)
-            }
-        }
-        colorGradientLayer.colors = gradientColors
     }
 
     fileprivate func downloadSampleColorsAndSegments() {
         activityIndicatorView.startAnimating()
-        RFColorLibrary.main.downloadSampleColorsAndSegments(withColors: { [weak self] (success: Bool, error: Error?) in
+
+        viewModel.downloadSampleColorsAndSegments(downloadColorsCompletion: { [weak self] (success: Bool) in
             DispatchQueue.main.async {
-                self?.activityIndicatorView.stopAnimating()
-            }
-            if success {
-                DispatchQueue.main.async {
+                if success {
                     self?.updateColorLibrary()
                 }
+                self?.activityIndicatorView.stopAnimating()
             }
-        }) { [weak self] (success: Bool, error: Error?) in
+        }) { [weak self] (success: Bool) in
             if success {
                 DispatchQueue.main.async {
                     self?.groupedSwitch.isEnabled = true
