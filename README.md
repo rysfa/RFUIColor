@@ -22,7 +22,7 @@ pod 'RFUIColor'
 
 ## Author
 
-rysfa, r.fa@live.ca
+rysfa, rfa1212@gmail.com
 
 ## License
 
