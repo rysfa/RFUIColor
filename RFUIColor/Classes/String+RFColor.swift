@@ -13,10 +13,10 @@ extension String {
 
     /// The `UIColor` value of the hexadecimal value of `self`. If `self` is not a valid hexadecimal value, returns nil.
     public var color: UIColor? {
-        guard isHexString() else {
+        guard var string = completeHexString() else {
             return nil
         }
-        let string = replacingOccurrences(of: "#", with: "").uppercased()
+        string = string.replacingOccurrences(of: "#", with: "").uppercased()
         var red: CGFloat = 0.0
         var blue: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -44,13 +44,29 @@ extension String {
 
     fileprivate func isHexString(isComplete: Bool = true) -> Bool {
         var hexString = Substring(self)
-        if self.first == "#" {
+        if first == "#" {
             hexString = dropFirst()
         }
-        guard (isComplete && hexString.count == 6) || (!isComplete && hexString.count <= 6) else {
+        let isLengthCorrect = hexString.count == 3 || hexString.count == 6
+        guard (isComplete && isLengthCorrect) || (!isComplete && hexString.count <= 6) else {
             return false
         }
         let validCharacters = CharacterSet(charactersIn: "0123456789ABCDEF")
         return hexString.rangeOfCharacter(from: validCharacters.inverted) == nil
+    }
+
+    fileprivate func completeHexString() -> String? {
+        guard isHexString() else {
+            return nil
+        }
+        let currentString = replacingOccurrences(of: "#", with: "").uppercased()
+        if currentString.count == 6 {
+            return self
+        }
+        var newString = first == "#" ? "#" : ""
+        for value in currentString {
+            newString = newString + String(value) + String(value)
+        }
+        return newString
     }
 }

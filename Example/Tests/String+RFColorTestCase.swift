@@ -18,8 +18,22 @@ class String_RFColorTestCase: XCTestCase {
         XCTAssertEqual(string.color, color)
     }
 
+    func test_color_validHexColor_partialWithOctothorpe() {
+        let string = "#F00"
+        let color = UIColor.red
+        XCTAssertNotNil(string.color)
+        XCTAssertEqual(string.color, color)
+    }
+
     func test_color_validHexColor_noOctothorpe() {
         let string = "FF0000"
+        let color = UIColor.red
+        XCTAssertNotNil(string.color)
+        XCTAssertEqual(string.color, color)
+    }
+
+    func test_color_validHexColor_partialNoOctothorpe() {
+        let string = "F00"
         let color = UIColor.red
         XCTAssertNotNil(string.color)
         XCTAssertEqual(string.color, color)
@@ -55,8 +69,12 @@ class String_RFColorTestCase: XCTestCase {
     }
 
     func test_isHexString_validValues() {
-        let string = "#FF0000"
-        XCTAssertTrue(string.isValidHexValue)
+        let string1 = "#FF0000"
+        XCTAssertTrue(string1.isValidHexValue)
+        let string2 = "FF0000"
+        XCTAssertTrue(string2.isValidHexValue)
+        let string3 = "F00"
+        XCTAssertTrue(string3.isValidHexValue)
     }
 
     func test_isHexString_invalidValues() {
