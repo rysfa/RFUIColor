@@ -48,7 +48,18 @@ extension UIColor {
     ///
     /// - Returns: The new `UIColor` result from the blend.
     public static func blend(colors: [UIColor],
-                             at distribution: [CGFloat] = [CGFloat]()) -> UIColor {
+                             at distribution: [CGFloat] = [CGFloat]()) -> UIColor? {
+        guard colors.count > 0  else {
+            return nil
+        }
+        if distribution.count > 0 {
+            if colors.count != distribution.count {
+                return nil
+            }
+            if distribution.reduce(0.0, +) != 1.0 {
+                return nil
+            }
+        }
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
@@ -63,25 +74,15 @@ extension UIColor {
             var blue1: CGFloat = 0.0
             var alpha1: CGFloat = 0.0
             color.getRed(&red1, green: &green1, blue: &blue1, alpha: &alpha1)
-            if distribution.count > i && distributionTotal + distribution[i] <= 1.0 {
-                if distribution[i] > 0.0 {
-                    red += red1 / distribution[i]
-                    green += green1 / distribution[i]
-                    blue += blue1 / distribution[i]
-                    alpha += alpha1 / distribution[i]
-                }
-                distributionTotal += distribution[i]
-            } else {
-                // Equally distribute the remainder of the colors
-                let distribution1: CGFloat = (1.0 - distributionTotal)
-                if distribution1 > 0.0 {
-                    red += red1 / distribution1
-                    green += green1 / distribution1
-                    blue += blue1 / distribution1
-                    alpha += alpha1 / distribution1
-                }
-                distributionTotal += distribution[i]
+            let distributionValue: CGFloat = distribution.count > 0 ? distribution[i] : (1.0 / CGFloat(colors.count))
+            guard distributionTotal + distributionValue <= 1.0, distributionValue >= 0.0 else {
+                return nil
             }
+            red += red1 / distributionValue
+            green += green1 / distributionValue
+            blue += blue1 / distributionValue
+            alpha += alpha1 / distributionValue
+            distributionTotal += distributionValue
         }
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
