@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5185FA0B2344E0960050C77B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FA0A2344E0960050C77B /* ViewModel.swift */; };
+		51203CBB2379ACB400CA4272 /* RFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51203CBA2379ACB400CA4272 /* RFViewController.swift */; };
+		512B62A22379FFDC004F1255 /* RFTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512B62A12379FFDC004F1255 /* RFTableView.swift */; };
+		5185FA0B2344E0960050C77B /* RFViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FA0A2344E0960050C77B /* RFViewModel.swift */; };
 		51CE59DF234A5CA80038D65C /* String+RFColorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE59DE234A5CA80038D65C /* String+RFColorTestCase.swift */; };
 		51FABB8D2364CAC9004E2BF5 /* UIColor+RFBlendingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FABB8C2364CAC9004E2BF5 /* UIColor+RFBlendingTestCase.swift */; };
 		51FABB8F2364D9ED004E2BF5 /* UIColor+RFGroupingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FABB8E2364D9ED004E2BF5 /* UIColor+RFGroupingTestCase.swift */; };
 		5409D6F759B209045B3F586A /* Pods_RFUIColor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1D13210CFD86DCB03DA4EF /* Pods_RFUIColor_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -36,15 +37,16 @@
 		386DF0C91143116EDA63CB7C /* Pods_RFUIColor_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39606AA426A8D2AB5B121EDF /* Pods-RFUIColor_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Tests.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Tests/Pods-RFUIColor_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4E1D13210CFD86DCB03DA4EF /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51203CBA2379ACB400CA4272 /* RFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFViewController.swift; sourceTree = "<group>"; };
+		512B62A12379FFDC004F1255 /* RFTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFTableView.swift; sourceTree = "<group>"; };
 		51620B8B5756ED277CFB7A26 /* Pods-RFUIColor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Example.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example.release.xcconfig"; sourceTree = "<group>"; };
-		5185FA0A2344E0960050C77B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5185FA0A2344E0960050C77B /* RFViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFViewModel.swift; sourceTree = "<group>"; };
 		51CE59DE234A5CA80038D65C /* String+RFColorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RFColorTestCase.swift"; sourceTree = "<group>"; };
 		51FABB8C2364CAC9004E2BF5 /* UIColor+RFBlendingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RFBlendingTestCase.swift"; sourceTree = "<group>"; };
 		51FABB8E2364D9ED004E2BF5 /* UIColor+RFGroupingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RFGroupingTestCase.swift"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RFUIColor_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFUIColor_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -122,8 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				5185FA0A2344E0960050C77B /* ViewModel.swift */,
+				51203CBA2379ACB400CA4272 /* RFViewController.swift */,
+				512B62A12379FFDC004F1255 /* RFTableView.swift */,
+				5185FA0A2344E0960050C77B /* RFViewModel.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -343,9 +346,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				5185FA0B2344E0960050C77B /* ViewModel.swift in Sources */,
+				51203CBB2379ACB400CA4272 /* RFViewController.swift in Sources */,
+				5185FA0B2344E0960050C77B /* RFViewModel.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				512B62A22379FFDC004F1255 /* RFTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
