@@ -1,9 +1,9 @@
 # RFUIColor
 
 [![CI Status](https://img.shields.io/travis/rysfa/RFUIColor.svg?style=flat)](https://travis-ci.org/rysfa/RFUIColor)
-<>[![Version](https://img.shields.io/cocoapods/v/RFUIColor.svg?style=flat)](https://cocoapods.org/pods/RFUIColor)
-<>[![License](https://img.shields.io/cocoapods/l/RFUIColor.svg?style=flat)](https://cocoapods.org/pods/RFUIColor)
-<>[![Platform](https://img.shields.io/cocoapods/p/RFUIColor.svg?style=flat)](https://cocoapods.org/pods/RFUIColor)
+#[![Version](https://img.shields.io/cocoapods/v/RFUIColor.svg?style=flat)](https://cocoapods.org/pods/RFUIColor)
+#[![License](https://img.shields.io/cocoapods/l/RFUIColor.svg?style=flat)](https://cocoapods.org/pods/RFUIColor)
+#[![Platform](https://img.shields.io/cocoapods/p/RFUIColor.svg?style=flat)](https://cocoapods.org/pods/RFUIColor)
 
 ## Example
 
