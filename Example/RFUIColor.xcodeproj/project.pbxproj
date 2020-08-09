@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		51203CBB2379ACB400CA4272 /* RFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51203CBA2379ACB400CA4272 /* RFViewController.swift */; };
 		512B62A22379FFDC004F1255 /* RFTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512B62A12379FFDC004F1255 /* RFTableView.swift */; };
+		5138D71424E047F90013A7D1 /* RFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138D71324E047F90013A7D1 /* RFTextField.swift */; };
 		5185FA0B2344E0960050C77B /* RFViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185FA0A2344E0960050C77B /* RFViewModel.swift */; };
 		51CE59DF234A5CA80038D65C /* String+RFColorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE59DE234A5CA80038D65C /* String+RFColorTestCase.swift */; };
 		51FABB8D2364CAC9004E2BF5 /* UIColor+RFBlendingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FABB8C2364CAC9004E2BF5 /* UIColor+RFBlendingTestCase.swift */; };
@@ -39,6 +40,7 @@
 		4E1D13210CFD86DCB03DA4EF /* Pods_RFUIColor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFUIColor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51203CBA2379ACB400CA4272 /* RFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFViewController.swift; sourceTree = "<group>"; };
 		512B62A12379FFDC004F1255 /* RFTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFTableView.swift; sourceTree = "<group>"; };
+		5138D71324E047F90013A7D1 /* RFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFTextField.swift; sourceTree = "<group>"; };
 		51620B8B5756ED277CFB7A26 /* Pods-RFUIColor_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFUIColor_Example.release.xcconfig"; path = "Target Support Files/Pods-RFUIColor_Example/Pods-RFUIColor_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5185FA0A2344E0960050C77B /* RFViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFViewModel.swift; sourceTree = "<group>"; };
 		51CE59DE234A5CA80038D65C /* String+RFColorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RFColorTestCase.swift"; sourceTree = "<group>"; };
@@ -125,8 +127,9 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				51203CBA2379ACB400CA4272 /* RFViewController.swift */,
-				512B62A12379FFDC004F1255 /* RFTableView.swift */,
 				5185FA0A2344E0960050C77B /* RFViewModel.swift */,
+				512B62A12379FFDC004F1255 /* RFTableView.swift */,
+				5138D71324E047F90013A7D1 /* RFTextField.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -349,6 +352,7 @@
 				51203CBB2379ACB400CA4272 /* RFViewController.swift in Sources */,
 				5185FA0B2344E0960050C77B /* RFViewModel.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				5138D71424E047F90013A7D1 /* RFTextField.swift in Sources */,
 				512B62A22379FFDC004F1255 /* RFTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

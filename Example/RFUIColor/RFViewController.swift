@@ -10,32 +10,19 @@ import UIKit
 
 class RFViewController: UIViewController {
 
+    @IBOutlet weak var textField: RFTextField!
+    @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var tableView: RFTableView!
-
-    @IBOutlet weak var redSlider: UISlider!
-    @IBOutlet weak var greenSlider: UISlider!
-    @IBOutlet weak var blueSlider: UISlider!
-
-    @IBOutlet weak var redLabel: UILabel!
-    @IBOutlet weak var greenLabel: UILabel!
-    @IBOutlet weak var blueLabel: UILabel!
-
     let viewModel = RFViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.viewModel = viewModel
         viewModel.delegate = self
         viewModel.downloadSampleColorsAndSegments()
-    }
 
-    // MARK: Outlet Actions
-
-    @IBAction func didChangeSliderValue(_ sender: UISlider) {
-        viewModel.updateColor(withRed: CGFloat(redSlider.value),
-                              withGreen: CGFloat(greenSlider.value),
-                              withBlue: CGFloat(blueSlider.value))
+        textField.rfDelegate = self
+        tableView.rfDelegate = self
     }
 }
 
@@ -43,14 +30,30 @@ extension RFViewController: RFViewModelDelegate {
 
     func viewModel(_ viewModel: RFViewModel, didFinishDownloadingColors success: Bool, withError error: Error?) {
         if success {
-            tableView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
         }
     }
+}
 
-    func viewModel(_ viewModel: RFViewModel, didFinishDownloadingSegments success: Bool, withError error: Error?) {
+extension RFViewController: RFTextFieldDelegate {
+
+    func textField(_ textField: RFTextField, updateColorTo color: UIColor) {
+        colorButton.backgroundColor = color
+        let index = viewModel.indexForBestMatch(for: color)
+        tableView.scrollToRow(at: IndexPath(item: index, section: 0), at: .middle, animated: false)
+        tableView.highlight(cellFor: index)
+    }
+}
+
+extension RFViewController: RFTableViewDelegate {
+
+    func numberOfColors(in tableView: RFTableView) -> Int {
+        return viewModel.numberOfColors
     }
 
-    func viewModel(_ viewModel: RFViewModel, didUpdateSelectedColor selectedColor: UIColor, withClosestMatch closestMatchIndex: Int) {
-        tableView.scrollToRow(at: IndexPath(item: closestMatchIndex, section: 0), at: .middle, animated: true)
+    func tableView(_ tableView: RFTableView, colorInfoFor index: Int) -> RFColorInfo? {
+        return viewModel.colorInfo(for: index)
     }
 }
