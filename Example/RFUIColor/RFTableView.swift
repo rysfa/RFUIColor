@@ -8,55 +8,53 @@
 
 import UIKit
 
-fileprivate let reuseIdentifier = "RFTableViewReuseIdentifier"
+fileprivate let reuseIdentifier = "cell"
 
-struct RFTableViewCellData {
-
-    var color: UIColor
-    var name: String
-    var textColor: UIColor
-    var isSelected: Bool
-
-    init(color color1: UIColor,
-         name name1: String,
-         textColor textColor1: UIColor,
-         isSelected isSelected1: Bool = false) {
-        color = color1
-        name = name1
-        textColor = textColor1
-        isSelected = isSelected1
-    }
+protocol RFTableViewDelegate: AnyObject {
+    func numberOfColors(in tableView: RFTableView) -> Int
+    func tableView(_ tableView: RFTableView, colorInfoFor index: Int) -> RFColorInfo?
 }
 
 class RFTableView: UITableView {
 
-    weak var viewModel: RFViewModel?
-
-    override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: style)
-        register(UITableViewCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
-    }
+    weak var rfDelegate: RFTableViewDelegate?
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        dataSource = self
+    }
+
+    func highlight(cellFor index: Int) {
+        if let cell = cellForRow(at: IndexPath(item: index, section: 0)) {
+            cell.layer.borderWidth = 2.0
+        }
     }
 }
 
 extension RFTableView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfColors ?? 0
+        guard let rfDelegate = rfDelegate, let rfTableView = tableView as? RFTableView else {
+            return 0
+        }
+        return rfDelegate.numberOfColors(in: rfTableView)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        if let data = viewModel?.colorCellData(for: indexPath.item) {
-            cell.contentView.layer.borderColor = UIColor.black.cgColor
-            cell.contentView.layer.borderWidth = data.isSelected ? 2.0 : 0.0
-            cell.contentView.backgroundColor = data.color
-            cell.textLabel?.text = data.name
-            cell.textLabel?.textColor = data.textColor
+        guard let rfDelegate = rfDelegate, let rfTableView = tableView as? RFTableView else {
+            return cell
         }
+        let colorInfo = rfDelegate.tableView(rfTableView, colorInfoFor: indexPath.item)
+        cell.contentView.backgroundColor = colorInfo?.color
+
+        cell.textLabel?.text = colorInfo?.name
+        cell.textLabel?.textColor = colorInfo?.textColor
+        cell.detailTextLabel?.text = colorInfo?.color.hexValue
+        cell.detailTextLabel?.textColor = colorInfo?.textColor
+
+        cell.layer.borderColor = colorInfo?.textColor.cgColor
+        cell.layer.borderWidth = 0.0
         return cell
     }
 }
